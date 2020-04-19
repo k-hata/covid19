@@ -84,10 +84,10 @@ function readContacts() : array
  */
 function readQuerents() : array
 {
-  $data = xlsxToArray(__DIR__.'/downloads/帰国者・接触者センター相談件数-RAW.xlsx', 'RAW', 'A2:D100', 'A1:D1');
+  $data = xlsxToArray(__DIR__.'/downloads/帰国者接触者センター相談件数-RAW.xlsx', 'RAW', 'A2:D100', 'A1:D1');
 
   return [
-    'date' => xlsxToArray(__DIR__.'/downloads/帰国者・接触者センター相談件数-RAW.xlsx', 'RAW', 'H1')[0][0],
+    'date' => xlsxToArray(__DIR__.'/downloads/帰国者接触者センター相談件数-RAW.xlsx', 'RAW', 'H1')[0][0],
     'data' => $data->filter(function ($row) {
 
       return $row['曜日'] && $row['17-翌9時'];
@@ -215,8 +215,13 @@ function readInspections() : array{
     return $row['疑い例検査'] !== null;
   });
   return [
-    'date' => '2020/3/30/ 19:30', //TODO 現在のエクセルに更新日付がないので変更する必要あり
-    'data' => $data
+    'date' => '2020/04/17/ 12:55', //TODO 現在のエクセルに更新日付がないので変更する必要あり
+    'data' => $data-> map(function ($row) {
+      $date = str_replace(['月', '日'], ['/', ''], $row['判明日']);
+      $carbon = Carbon::parse($date);
+      $row['判明日'] = str_replace(['2020-'],[''],$carbon->format('m/d/yy'));      
+      return $row;
+    })    
   ];
 }
 
