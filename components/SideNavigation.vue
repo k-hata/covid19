@@ -73,6 +73,7 @@
     "The latest updates": "千葉市内の最新感染動向",
     "If you have any symptoms": "新型コロナウイルス感染症が心配なときに",
     "All we have to do to prevent infection is simple.": "感染予防のためにできること",
+    "Support with takeout": "テイクアウトで応援！",
     "for Families with children": "お子様をお持ちの皆様へ",
     "for Citizens": "市民の皆様へ",
     "for Enterprises and Employees": "企業の皆様・はたらく皆様へ",
@@ -114,7 +115,12 @@ export default {
         {
           icon: 'mdi-shield-half-full',
           title: this.$t('All we have to do to prevent infection is simple.'),
-          link: 'https://www.bowlgraphics.net/covid19',
+          link: 'https://www.bowlgraphics.net/covid19'
+        },
+        {
+          icon: 'mdi-silverware-variant',
+          title: this.$t('Support with takeout'),
+          link: 'https://togo.code4chiba.org/',
           divider: true
         },
         {
@@ -135,10 +141,12 @@ export default {
           divider: true
         },
         {
+          icon: 'mdi-twitter',
           title: this.$t('Twitter by mayor kumagai'),
           link: 'https://twitter.com/kumagai_chiba'
         },
         {
+          icon: 'mdi-twitter',
           title: this.$t('Twitter by Chiba PR'),
           link: 'https://twitter.com/Chiba_city_PR'
         },
