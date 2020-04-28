@@ -8,7 +8,7 @@ function makeDateArray($begin) : Collection{
   $dates = [];
   while(true) {
 
-    if ($begin->diffInDays(Carbon::now()) == 0) {
+    if ($begin->diffInDays(Carbon::now()) == 1) {
       break;
     } else {
       $dates[$begin->addDay()->format('Y-m-d').'T08:00:00.000Z'] =0;
@@ -243,6 +243,13 @@ function readInspectionsSummary(array $inspections) : array
   ];
 }
 
+//実行時のパラメータとして更新日付を指定できるように変更
+$DefaultUpdate='';
+if($argc == 2) {
+  $DefaultUpdate = formatDate($argv[1]);
+} else {
+  print_r('php convert.php [DefaultUpdate(YYYY/MM/DD/ HH:MM)]');
+}
 
 $contacts = readContacts();
 $querents = readQuerents();
@@ -271,7 +278,12 @@ $data = compact([
 $lastUpdate = '';
 $lastTime = 0;
 foreach ($data as $key => &$arr) {
-    $arr['date'] = formatDate($arr['date']);
+  if($DefaultUpdate) {
+    $arr['date'] = $DefaultUpdate;
+    }
+    else{
+      $arr['date'] = formatDate($arr['date']);
+  }
     $timestamp = Carbon::parse()->format('YmdHis');
     if ($lastTime <= $timestamp) {
       $lastTime = $timestamp;
