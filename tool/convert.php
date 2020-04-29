@@ -280,15 +280,14 @@ $lastTime = 0;
 foreach ($data as $key => &$arr) {
   if($DefaultUpdate) {
     $arr['date'] = $DefaultUpdate;
-    }
-    else{
-      $arr['date'] = formatDate($arr['date']);
+  } else {
+    $arr['date'] = formatDate($arr['date']);
   }
-    $timestamp = Carbon::parse()->format('YmdHis');
-    if ($lastTime <= $timestamp) {
-      $lastTime = $timestamp;
-      $lastUpdate = Carbon::parse($arr['date'])->format('Y/m/d H:i');
-    }
+  $timestamp = Carbon::parse()->format('YmdHis');
+  if ($lastTime <= $timestamp) {
+    $lastTime = $timestamp;
+    $lastUpdate = Carbon::parse($arr['date'])->format('Y/m/d H:i');
+  }
 }
 $data['lastUpdate'] = $lastUpdate;
 
