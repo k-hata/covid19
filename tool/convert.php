@@ -297,29 +297,29 @@ $data['main_summary'] = [
   'children' => [
     [
       'attr' => '陽性患者数',
-      'value' => $better_patients_summary['data']['感染者数']->sum(),
+      'value' => xlsxToArray(__DIR__.'/downloads/検査実施サマリ.xlsx', '検査実施サマリ', 'A5')[0][0],
       'children' => [
         [
           'attr' => '入院中',
-          'value' => $better_patients_summary['data']['感染者数']->sum() - $better_patients_summary['data']['退院者数']->sum() - $better_patients_summary['data']['死亡者数']->sum(),
+          'value' => xlsxToArray(__DIR__.'/downloads/検査実施サマリ.xlsx', '検査実施サマリ', 'A8')[0][0],
           'children' => [
             [
               'attr' => '軽症・中等症',
-              'value' => $better_patients_summary['data']['軽症']->sum() + $better_patients_summary['data']['中等症']->sum()
+              'value' => xlsxToArray(__DIR__.'/downloads/検査実施サマリ.xlsx', '検査実施サマリ', 'A11')[0][0]
             ],
             [
               'attr' => '重症',
-              'value' => $better_patients_summary['data']['重症']->sum()
+              'value' => xlsxToArray(__DIR__.'/downloads/検査実施サマリ.xlsx', '検査実施サマリ', 'A14')[0][0]
             ]
           ]
         ],
         [
           'attr' => '退院',
-          'value' => $better_patients_summary['data']['退院者数']->sum()
+          'value' => xlsxToArray(__DIR__.'/downloads/検査実施サマリ.xlsx', '検査実施サマリ', 'A20')[0][0]
         ],
         [
           'attr' => '死亡',
-          'value' => $better_patients_summary['data']['死亡者数']->sum()
+          'value' => xlsxToArray(__DIR__.'/downloads/検査実施サマリ.xlsx', '検査実施サマリ', 'A17')[0][0]
         ]
 
       ]
