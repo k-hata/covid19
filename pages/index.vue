@@ -126,9 +126,6 @@ export default {
     const patientsGraph = formatGraph(Data.patients_summary.data)
     // 感染者数
     const patientsTable = formatTable(Data.patients.data)
-    // 退院者グラフ
-    const dischargesGraph = formatGraph(Data.discharges_summary.data)
-
     // 相談件数
     const contactsGraph = formatGraph(Data.contacts.data)
     // 帰国者・接触者電話相談センター相談件数
@@ -137,7 +134,7 @@ export default {
     const monorailGraph = MonorailData
     // 検査実施日別状況
     const inspectionsGraph = [
-      Data.inspections_summary.data['都内'],
+      Data.inspections_summary.data['市内'],
       Data.inspections_summary.data['その他']
     ]
     const inspectionsItems = [
@@ -165,7 +162,6 @@ export default {
       Data,
       patientsTable,
       patientsGraph,
-      dischargesGraph,
       contactsGraph,
       querentsGraph,
       monorailGraph,
