@@ -1,0 +1,41 @@
+name: convert
+
+on:
+  schedule:
+    - cron: 0 23 * * *
+
+env:
+  TZ: Asia/Tokyo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: cd tool && composer install --prefer-dist --no-progress --no-suggest && cd ..
+
+    - name: Git config
+      run: |
+        git config --global user.email ${{secrets.EMAIL}}
+        git config --global user.name ${{secrets.NAME}}
+    
+    # テスト用
+    - name: Git fetch
+      run: git fetch --prune
+
+    # テスト用
+    - name: Git checkout
+      run: git checkout -b feature/workflows-convert origin/feature/workflows-convert
+
+    - name: Convert
+      run: bash ./bin/download_data.sh
+
+    # テストで、feature/workflows-convertにpush
+    - name: Git add & commit & push
+      run: |
+        git status | grep "modified:   data/data.json" && git add data/data.json \
+          && git commit -m "update data.json: `date +'%Y-%m-%d %H:%M:%S'`" \
+          && git push origin feature/workflows-convert
