@@ -15,7 +15,7 @@ number_of_file=${#file_name[@]}
 # ダウンロード先ファイルの更新日とdata.jsonの更新日を比較する
 json_date=`date -r ./data/data.json +%Y%m%d`
 download=false
-for count in `seq ${number_of_file}`
+for count in `seq 0 $((number_of_file-1))`
 do
 	excel_date=`curl -s --head https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/covid-19/documents/${file_name[count]}.xlsx | grep Last-Modified`
 	result=`php ./tool/judge_date.php "${excel_date}" "${json_date}"`
@@ -29,7 +29,7 @@ done
 # ファイルをダウンロードする
 # convert.phpを実行する
 if ${download} ; then
-	for count in `seq ${number_of_file}`
+	for count in `seq 0 $((number_of_file-1))`
 	do
 		curl -o tool/downloads/${file_name[count]}.xlsx https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/covid-19/documents/${file_name[count]}.xlsx
 	done
