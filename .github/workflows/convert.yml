@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # feature/workflows-convertでテスト
     - uses: actions/checkout@v2
       with:
         ref: feature/workflows-convert
@@ -26,10 +27,15 @@ jobs:
     
     - name: Convert
       run: bash ./bin/download_data.sh
-
-    # テストで、feature/workflows-convertにpush
-    - name: Git add & commit & push
+ 
+    - name: Git add & commit
       run: |
         git status | grep "modified:   data/data.json" && git add data/data.json \
-          && git commit -m "update data.json: `date +'%Y-%m-%d %H:%M:%S'`" \
-          && git push origin feature/workflows-convert
+          && git commit -m "update data.json: `date +'%Y-%m-%d %H:%M:%S'`"
+
+    # feature/workflows-convertでテスト
+    - name: Git push
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: feature/workflows-convert
