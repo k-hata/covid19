@@ -12,23 +12,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: cd tool && composer install --prefer-dist --no-progress --no-suggest && cd ..
+      - name: Install dependencies
+        run: cd tool && composer install --prefer-dist --no-progress --no-suggest && cd ..
 
-    - name: Convert
-      run: bash ./bin/download_data.sh
+      - name: Convert
+        run: bash ./bin/download_data.sh
 
-    - name: Git add & commit
-      run: |
-        git config --local user.email "${{ secrets.EMAIL }}"
-        git config --local user.name "${{ secrets.NAME }}"
-        git status | grep "modified:   data/data.json" && git add data/data.json \
-          && git commit -m "update data.json: `date +'%Y-%m-%d %H:%M:%S'`"
+      - name: Git add & commit
+        run: |
+          git config --local user.email "${{ secrets.EMAIL }}"
+          git config --local user.name "${{ secrets.NAME }}"
+          git status | grep "modified:   data/data.json" && git add data/data.json \
+            && git commit -m "update data.json: `date +'%Y-%m-%d %H:%M:%S'`"
 
-    - name: Git push
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.PUSH_TOKEN }}
-        branch: development
+      - name: Set update data date
+        id: update_data
+        run: |
+          date=$(date +'%m/%d')
+          echo "::set-output name=date::$date"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v2
+        with:
+          title: 受領データの反映(${{ steps.update_data.outputs.date }})
+          branch: feature/update-data
