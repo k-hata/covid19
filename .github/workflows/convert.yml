@@ -2,7 +2,7 @@ name: convert
 
 on:
   schedule:
-    - cron: '0 14 * * *'
+    - cron: '0 * * * *'
 
 env:
   TZ: Asia/Tokyo
@@ -27,8 +27,14 @@ jobs:
         git status | grep "modified:   data/data.json" && git add data/data.json \
           && git commit -m "update data.json: `date +'%Y-%m-%d %H:%M:%S'`"
 
-    - name: Git push
-      uses: ad-m/github-push-action@master
+    - name: Set variables
+      id: update_data
+      run: |
+        date=$(date +'%m/%d')
+        echo "::set-output name=date::$date"
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v2
       with:
-        github_token: ${{ secrets.PUSH_TOKEN }}
-        branch: development
+        title: 受領データの反映(${{ steps.update_data.outputs.date }})
+        branch: feature/update-data
