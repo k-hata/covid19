@@ -6,7 +6,7 @@
     <TextCard>
       <p>
         当サイトは新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために、
-        <a href="https://www.code4chiba.org/" target="_blank" rel="noopener">
+        <a href="http://www.code4chiba.org/" target="_blank" rel="noopener">
           NPO法人Code for Chiba
         </a>
         が開設したものです。
