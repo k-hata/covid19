@@ -30,7 +30,7 @@
           :chart-data="patientsGraph"
           :date="Data.patients.date"
           :unit="'人'"
-          :url="''"
+          :url="openDataUrl"
         />
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
@@ -41,6 +41,7 @@
           :chart-option="{}"
           :date="Data.patients.date"
           :info="sumInfoOfPatients"
+          :url="openDataUrl"
         />
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
@@ -53,7 +54,7 @@
           :items="inspectionsItems"
           :labels="inspectionsLabels"
           :unit="'件'"
-          :url="''"
+          :url="openDataUrl"
         />
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
@@ -64,7 +65,7 @@
           :chart-data="contactsGraph"
           :date="Data.contacts.date"
           :unit="'件'"
-          :url="''"
+          :url="openDataUrl"
         />
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
@@ -75,7 +76,7 @@
           :chart-data="querentsGraph"
           :date="Data.querents.date"
           :unit="'件'"
-          :url="''"
+          :url="openDataUrl"
         />
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
@@ -158,7 +159,7 @@ export default {
       unit: '人'
     }
 
-    const data = {
+    return {
       Data,
       patientsTable,
       patientsGraph,
@@ -176,6 +177,8 @@ export default {
         date: Data.lastUpdate
       },
       newsItems: News.newsItems,
+      openDataUrl:
+        'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/covid-19/kanjamatome.html',
       monorailGraphOption: {
         responsive: true,
         legend: {
@@ -230,7 +233,6 @@ export default {
         }
       }
     }
-    return data
   },
   head() {
     return {
