@@ -10,15 +10,10 @@
       <v-spacer />
       <slot name="infoPanel" />
     </v-toolbar>
-    <v-card-text
-      :class="
-        $vuetify.breakpoint.xs ? 'DataView-CardTextForXS' : 'DataView-CardText'
-      "
-    >
+    <v-card-text class="DataView-CardText">
       <slot />
     </v-card-text>
-    <v-footer class="DataView-Footer">
-      <time :datetime="formattedDate">{{ date }} 更新</time>
+    <v-card-actions class="DataView-Footer">
       <a
         v-if="url"
         class="OpenDataLink"
@@ -26,12 +21,14 @@
         target="_blank"
         rel="noopener"
       >
-        オープンデータへのリンク
+        オープンデータを参照する
         <v-icon class="ExternalLinkIcon" size="15">
           mdi-open-in-new
         </v-icon>
       </a>
-    </v-footer>
+      <v-spacer />
+      <time :datetime="formattedDate">{{ date }} 更新</time>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -51,7 +48,7 @@ export default class DataView extends Vue {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .DataView {
   &-DataInfo {
     &-summary {
@@ -101,20 +98,14 @@ export default class DataView extends Vue {
     line-height: 1.5;
   }
   &-CardText {
-    margin-bottom: 46px;
+    margin-bottom: 12px;
     margin-top: 35px;
-  }
-  &-CardTextForXS {
-    margin-bottom: 46px;
-    margin-top: 70px;
   }
   &-Footer {
     background-color: $white !important;
     margin: 2px 4px 12px;
     @include font-size(12);
     color: $gray-3 !important;
-    justify-content: space-between;
-    flex-direction: row-reverse;
     .OpenDataLink {
       text-decoration: none;
       .ExternalLinkIcon {

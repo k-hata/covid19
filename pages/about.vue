@@ -6,7 +6,7 @@
     <TextCard>
       <p>
         当サイトは新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために、
-        <a href="https://www.code4chiba.org/" target="_blank" rel="noopener">
+        <a href="http://www.code4chiba.org/" target="_blank" rel="noopener">
           NPO法人Code for Chiba
         </a>
         が開設したものです。
@@ -114,7 +114,7 @@
     </TextCard>
     <TextCard title="データについて">
       <p>
-        本サイトで公表しているデータは、千葉市との連携により提供を受けたものとなります。将来的に
+        本サイトで公表しているデータは、千葉市との連携により提供を受けたものとなります。多くのデータは、
         <a
           href="https://www.city.chiba.jp/opendata/index.php"
           target="_blank"
@@ -122,7 +122,7 @@
         >
           千葉市オープンデータカタログサイト
         </a>
-        にて、誰でも入手できるようになる予定です。
+        にて、誰でも入手できるようになっております。
       </p>
     </TextCard>
     <TextCard title="ソースコードについて">
