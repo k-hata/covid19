@@ -38,3 +38,14 @@ jobs:
       with:
         title: 受領データの反映(${{ steps.update_data.outputs.date }})
         branch: feature/update-data
+
+    - name: Notify to slack
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        author_name: Renew Data
+        fields: repo,commit,action,ref,author,workflow
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      if: ${{ failure() }}
