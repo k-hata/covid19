@@ -19,8 +19,8 @@
           <svg viewBox="0 0 250 230">
             <defs>
               <g id="greenRect" class="x">
-                <rect class="ap" height="49" rx="4" width="155" />
-                <rect class="d" height="47" rx="3" width="153" x="1" y="1" />
+                <rect class="ap" height="59" rx="4" width="155" />
+                <rect class="d" height="57" rx="3" width="153" x="1" y="1" />
               </g>
               <g id="greenCheck" transform="translate(-10 -5)">
                 <circle class="i" cx="13" cy="13" r="13" />
@@ -51,34 +51,34 @@
             <g transform="translate(5 80)  scale(0.5)">
               <g>
                 <use xlink:href="#greenRect" x="0.5" />
-                <text class="h" transform="translate(40 30)">
+                <text class="h" transform="translate(40 40)">
                   <tspan>息苦しさ</tspan>
                 </text>
               </g>
-              <use xlink:href="#greenCheck" />
+              <use xlink:href="#greenCheck" x="80" y="-5" />
             </g>
 
             <g transform="translate(87 80) scale(0.5)">
               <g>
                 <use xlink:href="#greenRect" x="0.5" />
-                <text class="h" transform="translate(20 30)">
+                <text class="h" transform="translate(20 40)">
                   <tspan>強いけだるさ</tspan>
                 </text>
               </g>
-              <use xlink:href="#greenCheck" />
+              <use xlink:href="#greenCheck" x="80" y="-5" />
             </g>
 
             <g transform="translate(170 80) scale(0.5)">
               <g>
                 <use xlink:href="#greenRect" x="0.5" />
-                <text class="h" transform="translate(60 30)">
+                <text class="h" transform="translate(60 40)">
                   <tspan>高熱</tspan>
                 </text>
               </g>
-              <use xlink:href="#greenCheck" />
+              <use xlink:href="#greenCheck" x="80" y="-5" />
             </g>
 
-            <text class="ac" transform="translate(30 120) scale(0.75)">
+            <text class="ac" transform="translate(30 130) scale(0.75)">
               <tspan class="q" y="0">等の強い症状のいずれかがある場合</tspan>
             </text>
 
@@ -86,27 +86,27 @@
               <tspan>または</tspan>
             </text>
 
-            <g transform="translate(20 175) scale(0.5)">
+            <g transform="translate(30 175) scale(0.5)">
               <g>
                 <use xlink:href="#greenRect" />
-                <text class="h" transform="translate(50 30)">
+                <text class="h" transform="translate(50 40)">
                   <tspan>発熱</tspan>
                 </text>
               </g>
-              <use xlink:href="#greenCheck" />
+              <use xlink:href="#greenCheck" x="80" y="-5" />
             </g>
 
-            <g transform="translate(120 175) scale(0.5)">
+            <g transform="translate(130 175) scale(0.5)">
               <g>
                 <use xlink:href="#greenRect" />
-                <text class="h" transform="translate(60 30)">
+                <text class="h" transform="translate(70 40)">
                   <tspan x="0" y="0">咳</tspan>
                 </text>
               </g>
-              <use xlink:href="#greenCheck" />
+              <use xlink:href="#greenCheck" x="80" y="-5" />
             </g>
 
-            <text class="ac" transform="translate(30 220)  scale(0.75)">
+            <text class="ac" transform="translate(30 225)  scale(0.75)">
               <tspan class="q" y="0">等の比較的軽い症状が続いている場合</tspan>
             </text>
           </svg>
@@ -170,7 +170,7 @@
               </g>
 
               <g transform="translate(90 150)">
-                <text class="ae" transform="translate(0)">
+                <text class="ae" transform="translate(-10 0)">
                   <tspan x="0" y="0">妊娠中の方</tspan>
                 </text>
                 <g transform="translate(20 -60)">
@@ -192,24 +192,24 @@
                 </g>
               </g>
 
-              <g transform="translate(20 175) scale(0.5)">
+              <g transform="translate(30 175) scale(0.5)">
                 <g>
                   <use xlink:href="#greenRect" />
-                  <text class="h" transform="translate(50 30)">
+                  <text class="h" transform="translate(50 40)">
                     <tspan>発熱</tspan>
                   </text>
                 </g>
-                <use xlink:href="#greenCheck" />
+                <use xlink:href="#greenCheck" x="80" y="-5" />
               </g>
 
-              <g transform="translate(120 175) scale(0.5)">
+              <g transform="translate(130 175) scale(0.5)">
                 <g>
                   <use xlink:href="#greenRect" />
-                  <text class="h" transform="translate(60 30)">
+                  <text class="h" transform="translate(70 40)">
                     <tspan x="0" y="0">咳</tspan>
                   </text>
                 </g>
-                <use xlink:href="#greenCheck" />
+                <use xlink:href="#greenCheck" x="80" y="-5" />
               </g>
 
               <text class="ac" transform="translate(30 220)  scale(0.75)">
@@ -280,7 +280,7 @@
                     />
                   </g>
                 </g>
-                <text class="h" transform="translate(30 60)">
+                <text class="h" transform="translate(50 60)">
                   <tspan x="0" y="0">感染予防法が知りたい</tspan>
                 </text>
               </g>
@@ -328,18 +328,30 @@
         </div>
         <div class="Flow-Card-Parts">
           <div class="mx-2 mb-5">
-            <h3 class="SodanHeader Title">
-              帰国者・接触者電話相談センター
-            </h3>
-            <p class="SodanHeader">
-              による相談結果
-            </p>
-            <p>
-              医療機関への受診が必要と判断された場合
-            </p>
-            <p>
-              受信先医療機関の医師による判断
-            </p>
+            <svg viewBox="0 0 250 230">
+              <text class="soudanKekka" transform="translate(0 20)">
+                <tspan x="0" y="0">帰国者・接触者相談センター</tspan>
+                <tspan x="40" y="20">による相談結果</tspan>
+              </text>
+              <text class="c" transform="translate(80 80)">
+                <tspan>医療機関への</tspan>
+              </text>
+              <text class="aj" transform="translate(40 120)">
+                <tspan>受診が必要</tspan>
+              </text>
+              <text class="c" transform="translate(55 140)">
+                <tspan>と判断された場合</tspan>
+              </text>
+              <g transform="translate(0 170)">
+                <rect class="e" height="54" rx="4" width="240" />
+                <text class="white" transform="translate(0 20)">
+                  <tspan x="60" y="0">受診先医療機関の</tspan>
+                </text>
+                <text class="white" transform="translate(0 40)">
+                  <tspan x="65" y="0">医師による判断</tspan>
+                </text>
+              </g>
+            </svg>
           </div>
           <div class="Col2Btn">
             <div class="mx-1 mb-5">
@@ -378,10 +390,61 @@
             </div>
           </div>
           <div id="not_required" class="mx-2">
-            <img
-              src="/flow/sp/sp_flow_06_03@2x.png"
-              alt="新型コロナ外来受診が不要と判断された場合／自宅で安静に過ごす・一般の医療機関を受診／症状が良くならない場合は新型コロナ受診相談窓口に相談"
-            />
+            <svg viewBox="0 0 250 430">
+              <text class="c" transform="translate(80 40)">
+                <tspan>医療機関への</tspan>
+              </text>
+              <text class="aj" transform="translate(40 80)">
+                <tspan>受診が不要</tspan>
+              </text>
+              <text class="c" transform="translate(55 100)">
+                <tspan>と判断された場合</tspan>
+              </text>
+              <g transform="translate(20 120)">
+                <g transform="translate(0)">
+                  <text class="ae" transform="translate(50 25)">
+                    <tspan x="0" y="0">自宅で安静に過ごす</tspan>
+                  </text>
+                  <g transform="translate(0 6)">
+                    <rect
+                      class="d"
+                      height="30"
+                      transform="translate(0 -0.474)"
+                      width="30"
+                    />
+                    <g transform="translate(2.5 3.75)">
+                      <path
+                        class="e"
+                        d="M23.25,10.875V4.25H19.5V7.5L14.5,3,2,14.25H5.75v10H12v-7.5h5v7.5h6.25v-10H27ZM12,11.75a2.5,2.5,0,0,1,5,0Z"
+                        transform="translate(-2 -3)"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+              <g class="x" transform="translate(10 200)">
+                <rect class="ap" height="207" rx="4" width="241" />
+                <rect class="d" height="205" rx="3" width="239" x="1" y="1" />
+              </g>
+              <g transform="translate(0 220)">
+                <g transform="translate(20 0)">
+                  <text class="p" transform="translate(0 10)">
+                    <tspan x="70" y="0">症状が</tspan>
+                    <tspan x="20" y="30">良くならない場合は</tspan>
+                  </text>
+                </g>
+                <text class="c" transform="translate(30 80)">
+                  <tspan x="80" y="0">再度</tspan>
+                  <tspan x="0" y="25">帰国者・接触者相談センター</tspan>
+                  <tspan x="20" y="50">もしくはかかりつけ医</tspan>
+                </text>
+                <g transform="translate(21 160)">
+                  <text class="p" transform="translate(20 0)">
+                    <tspan x="60" y="0">に相談</tspan>
+                  </text>
+                </g>
+              </g>
+            </svg>
           </div>
         </div>
         <div id="hospitalized" class="Flow-Card-Parts">
@@ -423,6 +486,18 @@ export default {
 </script>
 
 <style lang="scss">
+.white {
+  fill: #ffffff;
+}
+
+.soudanKekka {
+  fill: #00a040;
+}
+
+.soudanKekka {
+  font-size: 20px;
+}
+
 .Flow {
   margin-bottom: 20px;
   &-Heading {
