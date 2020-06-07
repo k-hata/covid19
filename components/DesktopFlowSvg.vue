@@ -915,7 +915,7 @@
         <g transform="translate(-101 1091)">
           <text class="b" transform="translate(238 106)">
             <tspan x="-77" y="0">千葉市</tspan>
-            <tspan x="-77" y="25">環境保険研究所</tspan>
+            <tspan x="-77" y="25">環境保健研究所</tspan>
           </text>
         </g>
       </g>
