@@ -286,18 +286,21 @@
               </g>
             </svg>
           </div>
-          <div class="TelLink">
-            <a href="tel:043-238-9966"
-              ><img src="/flow/sp/sp_flow_tel_01@2x.png" alt="043-238-9966"
-            /></a>
-          </div>
-          <div class="mt-4">
-            <a v-scroll-to="'#consult'" href="#consult">
-              <img
-                src="/flow/sp/sp_flow_04_nav@2x.png"
-                alt="専門的な助言が必要な場合"
-              />
-            </a>
+          <div class="SodanYakan">
+            <h3 class="SodanHeader Title">
+              市民向け電話相談窓口
+            </h3>
+            <dt class="Yakan">
+              <br />
+              <span class="SodanTime">午前9時から午後7時まで</span>
+              <br />
+              土日祝 午前9時から午後5時まで
+            </dt>
+            <dd class="TelLink">
+              <a href="tel:043-238-9966">
+                <img src="/flow/sp/sp_flow_tel_03@2x.png" alt="043-238-9966" />
+              </a>
+            </dd>
           </div>
         </div>
         <div id="consult" class="Flow-Card-Parts Flat">
