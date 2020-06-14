@@ -5,7 +5,7 @@
       <h2 class="Flow-Heading-Title">
         新型コロナウイルス感染症が心配なときに
       </h2>
-      <PrinterButton :wrapper-class="'Flow-PullRight'" />
+      <PrinterButton :wrapper-class="['Flow-PullRight', 'only-pc']" />
     </div>
     <div class="Flow-Card">
       <h2>
@@ -629,6 +629,9 @@ export default {
   }
   .only-pc {
     display: none;
+  }
+  .Flow-Heading-Title {
+    @include font-size(20);
   }
 }
 </style>
