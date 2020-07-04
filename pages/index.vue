@@ -178,7 +178,7 @@ export default {
       },
       newsItems: News.newsItems,
       openDataUrl:
-        'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/covid-19/kanjamatome.html',
+        'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/covid-19/opendata.html',
       monorailGraphOption: {
         responsive: true,
         legend: {
