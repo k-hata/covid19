@@ -1,24 +1,19 @@
 {
   "newsItems": [
     {
-      "date": "2020/06/01",
-      "url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/corona_tsuiseki.html",
-      "text": "千葉市コロナ追跡サービスの運用を開始しました"
+      "date": "2020/07/17",
+      "url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/corona_sengennomise.html",
+      "text": "千葉市新型コロナ感染症対策取組宣言の店の応援事業について"
     },
     {
-      "date": "2020/05/29",
+      "date": "2020/07/17",
       "url": "https://www.city.chiba.jp/shimin/shimin/kusei/covid-19_tokutei.html",
       "text": "特別定額給付金について"
     },
     {
-      "date": "2020/05/25",
-      "url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/covid-19/shisetsu.html",
-      "text": "緊急事態宣言の解除に伴う、市施設の再開について"
-    },
-    {
-      "date": "2020/05/15",
-      "url": "https://www.city.chiba.jp/kyoiku/gakkokyoiku/gakuji/covid19-saikai.html",
-      "text": "6月1日から市立学校を再開します"
+      "date": "2020/07/14",
+      "url": "https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/corona_tsuiseki.html",
+      "text": "千葉市コロナ追跡サービスについて"
     }
   ]
 }
