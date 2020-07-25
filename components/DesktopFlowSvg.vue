@@ -247,7 +247,7 @@
         id="c"
         filterUnits="userSpaceOnUse"
         height="196"
-        width="493"
+        width="752"
         x="0"
         y="514"
       >
@@ -343,160 +343,60 @@
       </filter>
     </defs>
     <g transform="translate(3 3)">
-      <g class="ba" transform="matrix(1, 0, 0, 1, -3, -3)">
-        <g class="a" transform="translate(501 518)">
-          <rect class="ap" height="189" rx="4" width="248" />
-          <rect
-            class="d"
-            height="187.5"
-            rx="3.25"
-            width="246.5"
-            x="0.75"
-            y="0.75"
-          />
-        </g>
-      </g>
-      <text class="b" transform="translate(622 555)">
-        <tspan x="-110" y="0">市民向け電話相談窓口</tspan>
-      </text>
-      <text class="c" transform="translate(622 614)">
-        <tspan x="-95" y="0">午前9時から午後7時まで</tspan>
-        <tspan x="-105" y="20">（土日祝日は午後5時まで）</tspan>
-      </text>
-      <g class="az" transform="matrix(1, 0, 0, 1, -3, -3)">
-        <g class="a" transform="translate(3 517)">
-          <rect class="ap" height="190" rx="4" width="487" />
-          <rect
-            class="d"
-            height="188.5"
-            rx="3.25"
-            width="485.5"
-            x="0.75"
-            y="0.75"
-          />
-        </g>
-      </g>
-      <g transform="translate(66 570)">
-        <g transform="translate(25 0)">
-          <path class="d" d="M0,0H45.36V45.36H0Z" />
-          <path
-            class="e"
-            d="M0,18.047A18.047,18.047,0,1,1,18.029,36.094,18.038,18.038,0,0,1,0,18.047Zm3.609,0A14.438,14.438,0,1,0,18.047,3.609,14.434,14.434,0,0,0,3.609,18.047Zm20.664,9.926a7.176,7.176,0,0,0-12.453,0H8.807a9.917,9.917,0,0,1,18.481,0ZM21.656,13.535a2.707,2.707,0,1,1,2.708,2.708A2.706,2.706,0,0,1,21.656,13.535Zm-12.634,0a2.708,2.708,0,1,1,2.708,2.708A2.707,2.707,0,0,1,9.022,13.535Z"
-            transform="translate(4.413 4.412)"
-          />
-        </g>
-        <text class="c" transform="translate(0 71)">
-          <tspan x="0" y="0">不安に思う方</tspan>
-        </text>
-      </g>
-      <g transform="translate(-74 289)">
-        <rect
-          class="e"
-          height="94"
-          rx="4"
-          transform="translate(876 270)"
-          width="198"
-        />
-        <text class="f" transform="translate(975 312)">
-          <tspan x="-70" y="0">専門的な助言が</tspan>
-          <tspan x="-50" y="27">必要な場合</tspan>
-        </text>
-      </g>
-
-      <g transform="translate(-4.559 261.625)">
-        <g transform="translate(200 278)">
-          <g class="x">
-            <rect class="ap" height="49" rx="4" width="280" />
-            <rect class="d" height="47" rx="3" width="278" x="1" y="1" />
-          </g>
-        </g>
-        <text class="h" transform="translate(210 308)">
-          <tspan x="0" y="0">感染したかもしれないと不安</tspan>
-        </text>
-      </g>
-      <g transform="translate(-5.559 267.733)">
-        <g transform="translate(200 368)">
-          <g class="x">
-            <rect class="ap" height="49" rx="4" width="280" />
-            <rect class="d" height="47" rx="3" width="278" x="1" y="1" />
-          </g>
-        </g>
-        <text class="h" transform="translate(210 398)">
-          <tspan x="0" y="0">感染予防法が知りたい</tspan>
-        </text>
-      </g>
-      <g transform="translate(730 587)">
-        <g class="k">
-          <circle class="ap" cx="23" cy="23" r="23" />
-          <circle class="d" cx="23" cy="23" r="22" />
-        </g>
-        <g transform="translate(5 5)">
-          <path class="d" d="M0,0H36V36H0Z" />
-          <path
-            class="e"
-            d="M16,4,13.885,6.115l8.37,8.385H4v3H22.255l-8.37,8.385L16,28,28,16Z"
-            transform="translate(2 2)"
-          />
-        </g>
-      </g>
-      <g transform="translate(470 587)">
-        <g class="k">
-          <circle class="ap" cx="23" cy="23" r="23" />
-          <circle class="d" cx="23" cy="23" r="22" />
-        </g>
-        <g transform="translate(5 5)">
-          <path class="d" d="M0,0H36V36H0Z" />
-          <path
-            class="e"
-            d="M16,4,13.885,6.115l8.37,8.385H4v3H22.255l-8.37,8.385L16,28,28,16Z"
-            transform="translate(2 2)"
-          />
-        </g>
-      </g>
-      <g transform="translate(878 552) rotate(-90)">
-        <g class="l">
-          <path
-            class="ap"
-            d="M 23 45 C 20.02957916259766 45 17.14854049682617 44.41846084594727 14.43690967559814 43.27154159545898 C 11.81729030609131 42.16352844238281 9.464409828186035 40.57711029052734 7.443649768829346 38.55635070800781 C 5.422890186309814 36.53559112548828 3.836469888687134 34.18270874023438 2.728460073471069 31.56308937072754 C 1.581539988517761 28.85145950317383 1 25.97042083740234 1 23 C 1 20.02957916259766 1.581539988517761 17.14854049682617 2.728460073471069 14.43690967559814 C 3.836469888687134 11.81729030609131 5.422890186309814 9.464409828186035 7.443649768829346 7.443649768829346 C 9.464409828186035 5.422890186309814 11.81729030609131 3.836469888687134 14.43690967559814 2.728460073471069 C 17.14854049682617 1.581539988517761 20.02957916259766 1 23 1 C 25.97042083740234 1 28.85145950317383 1.581539988517761 31.56308937072754 2.728460073471069 C 34.18270874023438 3.836469888687134 36.53559112548828 5.422890186309814 38.55635070800781 7.443649768829346 C 40.57711029052734 9.464409828186035 42.16352844238281 11.81729030609131 43.27154159545898 14.43690967559814 C 44.41846084594727 17.14854049682617 45 20.02957916259766 45 23 C 45 25.97042083740234 44.41846084594727 28.85145950317383 43.27154159545898 31.56308937072754 C 42.16352844238281 34.18270874023438 40.57711029052734 36.53559112548828 38.55635070800781 38.55635070800781 C 36.53559112548828 40.57711029052734 34.18270874023438 42.16352844238281 31.56308937072754 43.27154159545898 C 28.85145950317383 44.41846084594727 25.97042083740234 45 23 45 Z"
-          />
-          <path
-            class="ar"
-            d="M 23 2 C 20.16414070129395 2 17.41415977478027 2.554958343505859 14.82646942138672 3.649459838867188 C 12.3260383605957 4.707050323486328 10.08000946044922 6.221511840820312 8.150760650634766 8.150760650634766 C 6.221511840820312 10.08000946044922 4.707050323486328 12.3260383605957 3.649459838867188 14.82646942138672 C 2.554958343505859 17.41415977478027 2 20.16414070129395 2 23 C 2 25.83585929870605 2.554958343505859 28.58584022521973 3.649459838867188 31.17353057861328 C 4.707050323486328 33.67395782470703 6.221511840820312 35.91999053955078 8.150760650634766 37.84923934936523 C 10.08000946044922 39.77848815917969 12.3260383605957 41.29294967651367 14.82646942138672 42.35054016113281 C 17.41415977478027 43.44504165649414 20.16414070129395 44 23 44 C 25.83585929870605 44 28.58584022521973 43.44504165649414 31.17353057861328 42.35054016113281 C 33.67395782470703 41.29294967651367 35.91999053955078 39.77848815917969 37.84923934936523 37.84923934936523 C 39.77848815917969 35.91999053955078 41.29294967651367 33.67395782470703 42.35054016113281 31.17353057861328 C 43.44504165649414 28.58584022521973 44 25.83585929870605 44 23 C 44 20.16414070129395 43.44504165649414 17.41415977478027 42.35054016113281 14.82646942138672 C 41.29294967651367 12.3260383605957 39.77848815917969 10.08000946044922 37.84923934936523 8.150760650634766 C 35.91999053955078 6.221511840820312 33.67395782470703 4.707050323486328 31.17353057861328 3.649459838867188 C 28.58584022521973 2.554958343505859 25.83585929870605 2 23 2 M 23 0 C 35.70254898071289 0 46 10.29745101928711 46 23 C 46 35.70254898071289 35.70254898071289 46 23 46 C 10.29745101928711 46 0 35.70254898071289 0 23 C 0 10.29745101928711 10.29745101928711 0 23 0 Z"
-          />
-        </g>
-        <g transform="translate(5 5)">
-          <path class="d" d="M0,0H36V36H0Z" />
-          <path
-            class="e"
-            d="M16,4,13.885,6.115l8.37,8.385H4v3H22.255l-8.37,8.385L16,28,28,16Z"
-            transform="translate(2 2)"
-          />
-        </g>
-      </g>
+      <!-- 帰国者・接触者相談センター -->
       <rect
         class="m"
-        height="498"
+        height="448"
         rx="4"
-        transform="translate(761)"
+        transform="translate(761 20)"
         width="279"
       />
-      <text class="n" transform="translate(901 60)">
+      <text class="n" transform="translate(881 150)">
         <tspan x="-75" y="0">帰国者・接触者</tspan>
-        <tspan x="-78" y="29">電話相談センター</tspan>
+        <tspan x="-78" y="34">電話相談センター</tspan>
       </text>
+      <line class="r" transform="translate(784 265)" x2="236" />
       <g transform="translate(-45 -100)">
-        <text class="p" transform="translate(946 469)">
+        <text class="p" transform="translate(946 409)">
           <tspan class="q">
             <tspan x="-91.392" y="23">午前9時から午後7時まで</tspan>
           </tspan>
         </text>
       </g>
-      <line class="r" transform="translate(783.5 338.5)" x2="236" />
       <g transform="translate(-56 55)">
-        <text class="c" transform="translate(987 367)">
+        <text class="c" transform="translate(987 312)">
           <tspan x="-120" y="0">(土日祝日は午後5時まで)</tspan>
         </text>
       </g>
+
+      <!-- 市民向け電話相談窓口 -->
+      <rect
+        class="m"
+        height="188"
+        rx="4"
+        transform="translate(761 516)"
+        width="279"
+      />
+      <text class="b" transform="translate(898 555)">
+        <tspan x="-110" y="0">市民向け電話相談窓口</tspan>
+      </text>
+      <text class="c" transform="translate(898 608)">
+        <tspan x="-95" y="0">午前9時から午後7時まで</tspan>
+        <tspan x="-105" y="28">（土日祝日は午後5時まで）</tspan>
+      </text>
+      <g transform="translate(796 656)">
+        <path class="d" d="M0,0H26V26H0Z" />
+        <path
+          class="e"
+          d="M6.922,11.439a16.411,16.411,0,0,0,7.139,7.139L16.444,16.2a1.077,1.077,0,0,1,1.1-.26,12.358,12.358,0,0,0,3.867.617A1.087,1.087,0,0,1,22.5,17.636v3.781A1.087,1.087,0,0,1,21.417,22.5,18.415,18.415,0,0,1,3,4.083,1.087,1.087,0,0,1,4.083,3H7.875A1.087,1.087,0,0,1,8.958,4.083a12.307,12.307,0,0,0,.617,3.867A1.087,1.087,0,0,1,9.3,9.056Z"
+          transform="translate(0.25 0.25)"
+        />
+      </g>
+      <text class="an" transform="translate(906 679)">
+        <tspan x="-79.555" y="0">043-238-9966</tspan>
+      </text>
+
+      <!-- 一般の方 -->
       <g class="ay" transform="matrix(1, 0, 0, 1, -3, -3)">
         <g class="g" transform="translate(3 3)">
           <path
@@ -509,8 +409,7 @@
           />
         </g>
       </g>
-
-      <g transform="translate(80 60)">
+      <g transform="translate(80 80)">
         <text class="ae" transform="translate(28 73)">
           <tspan x="-30" y="0">一般の方</tspan>
         </text>
@@ -523,8 +422,7 @@
           />
         </g>
       </g>
-
-      <g transform="translate(240 10)">
+      <g transform="translate(220 20)">
         <g>
           <g class="x">
             <rect class="ap" height="49" rx="4" width="155" />
@@ -545,8 +443,7 @@
           </g>
         </g>
       </g>
-
-      <g transform="translate(410 10)">
+      <g transform="translate(395 20)">
         <g>
           <g class="x">
             <rect class="ap" height="49" rx="4" width="155" />
@@ -567,8 +464,7 @@
           </g>
         </g>
       </g>
-
-      <g transform="translate(580 10)">
+      <g transform="translate(570 20)">
         <g>
           <g class="x">
             <rect class="ap" height="49" rx="4" width="155" />
@@ -589,16 +485,13 @@
           </g>
         </g>
       </g>
-
-      <text class="ac" transform="translate(360 80)">
+      <text class="ac" transform="translate(360 94)">
         <tspan class="q" y="0">等の強い症状のいずれかがある場合</tspan>
       </text>
-
-      <text class="b" transform="translate(435 110)">
+      <text class="b" transform="translate(435 123)">
         <tspan x="0" y="0">または</tspan>
       </text>
-
-      <g transform="translate(290 125)">
+      <g transform="translate(290 135)">
         <g>
           <g class="x">
             <rect class="ap" height="49" rx="4" width="155" />
@@ -619,7 +512,7 @@
           </g>
         </g>
       </g>
-      <g transform="translate(490 125)">
+      <g transform="translate(490 135)">
         <g>
           <g class="x">
             <rect class="ap" height="49" rx="4" width="155" />
@@ -640,11 +533,25 @@
           </g>
         </g>
       </g>
-      <text class="ac" transform="translate(350 200)">
+      <text class="ac" transform="translate(350 210)">
         <tspan class="q" y="0">等の比較的軽い症状が続いている場合</tspan>
       </text>
+      <g transform="translate(0 -21)">
+        <text class="an" transform="translate(913 436)">
+          <tspan x="-84.051" y="0">043-238-9966</tspan>
+        </text>
+        <g transform="translate(800 414)">
+          <path class="d" d="M0,0H26V26H0Z" />
+          <path
+            class="e"
+            d="M6.922,11.439a16.411,16.411,0,0,0,7.139,7.139L16.444,16.2a1.077,1.077,0,0,1,1.1-.26,12.358,12.358,0,0,0,3.867.617A1.087,1.087,0,0,1,22.5,17.636v3.781A1.087,1.087,0,0,1,21.417,22.5,18.415,18.415,0,0,1,3,4.083,1.087,1.087,0,0,1,4.083,3H7.875A1.087,1.087,0,0,1,8.958,4.083a12.307,12.307,0,0,0,.617,3.867A1.087,1.087,0,0,1,9.3,9.056Z"
+            transform="translate(0.25 0.25)"
+          />
+        </g>
+      </g>
 
-      <g transform="translate(730 163)">
+      <!-- 矢印(重ね合わせ順が重要) -->
+      <g transform="translate(730 102)">
         <g class="k">
           <circle class="ap" cx="23" cy="23" r="23" />
           <circle class="d" cx="23" cy="23" r="22" />
@@ -658,6 +565,8 @@
           />
         </g>
       </g>
+
+      <!-- ご高齢の方... -->
       <g class="ax" transform="matrix(1, 0, 0, 1, -3, -3)">
         <g class="a" transform="translate(3 244)">
           <rect class="ap" height="257" rx="4" width="746" />
@@ -671,7 +580,7 @@
           />
         </g>
       </g>
-      <g transform="translate(29 220)">
+      <g transform="translate(29 240)">
         <text class="ae" transform="translate(54 83)">
           <tspan x="0" y="0">ご高齢な方</tspan>
         </text>
@@ -684,7 +593,7 @@
           />
         </g>
       </g>
-      <g transform="translate(29 3)">
+      <g transform="translate(29 30)">
         <text class="ae" transform="translate(54 346)">
           <tspan x="0" y="0">基礎疾患のある方</tspan>
         </text>
@@ -697,7 +606,7 @@
           />
         </g>
       </g>
-      <g transform="translate(29 -5)">
+      <g transform="translate(29 30)">
         <text class="ae" transform="translate(54 402)">
           <tspan x="0" y="0">妊娠中の方</tspan>
         </text>
@@ -764,7 +673,9 @@
       <text class="ac" transform="translate(350 420)">
         <tspan class="q" y="0">等の比較的軽い症状が続いている場合</tspan>
       </text>
-      <g transform="translate(730 437)">
+
+      <!-- 矢印(重ね合わせ順が重要) -->
+      <g transform="translate(730 337)">
         <g class="k">
           <circle class="ap" cx="23" cy="23" r="23" />
           <circle class="d" cx="23" cy="23" r="22" />
@@ -778,6 +689,74 @@
           />
         </g>
       </g>
+
+      <!-- 不安に思う方 -->
+      <g class="az" transform="matrix(1, 0, 0, 1, -3, -3)">
+        <g class="a" transform="translate(3 517)">
+          <rect class="ap" height="190" rx="4" width="746" />
+          <rect
+            class="d"
+            height="188.5"
+            rx="3.25"
+            width="744.5"
+            x="0.75"
+            y="0.75"
+          />
+        </g>
+      </g>
+      <g transform="translate(66 570)">
+        <g transform="translate(25 0)">
+          <path class="d" d="M0,0H45.36V45.36H0Z" />
+          <path
+            class="e"
+            d="M0,18.047A18.047,18.047,0,1,1,18.029,36.094,18.038,18.038,0,0,1,0,18.047Zm3.609,0A14.438,14.438,0,1,0,18.047,3.609,14.434,14.434,0,0,0,3.609,18.047Zm20.664,9.926a7.176,7.176,0,0,0-12.453,0H8.807a9.917,9.917,0,0,1,18.481,0ZM21.656,13.535a2.707,2.707,0,1,1,2.708,2.708A2.706,2.706,0,0,1,21.656,13.535Zm-12.634,0a2.708,2.708,0,1,1,2.708,2.708A2.707,2.707,0,0,1,9.022,13.535Z"
+            transform="translate(4.413 4.412)"
+          />
+        </g>
+        <text class="c" transform="translate(0 71)">
+          <tspan x="0" y="0">不安に思う方</tspan>
+        </text>
+      </g>
+      <g transform="translate(-4.559 261.625)">
+        <g transform="translate(292 288)">
+          <g class="x">
+            <rect class="ap" height="49" rx="4" width="380" />
+            <rect class="d" height="47" rx="3" width="378" x="1" y="1" />
+          </g>
+        </g>
+        <text class="h" transform="translate(362 320)">
+          <tspan x="0" y="0">感染したかもしれないと不安</tspan>
+        </text>
+      </g>
+      <g transform="translate(-5.559 267.733)">
+        <g transform="translate(292 368)">
+          <g class="x">
+            <rect class="ap" height="49" rx="4" width="380" />
+            <rect class="d" height="47" rx="3" width="378" x="1" y="1" />
+          </g>
+        </g>
+        <text class="h" transform="translate(388 400)">
+          <tspan x="0" y="0">感染予防法が知りたい</tspan>
+        </text>
+      </g>
+
+      <!-- 矢印(重ね合わせ順が重要) -->
+      <g transform="translate(730 587)">
+        <g class="k">
+          <circle class="ap" cx="23" cy="23" r="23" />
+          <circle class="d" cx="23" cy="23" r="22" />
+        </g>
+        <g transform="translate(5 5)">
+          <path class="d" d="M0,0H36V36H0Z" />
+          <path
+            class="e"
+            d="M16,4,13.885,6.115l8.37,8.385H4v3H22.255l-8.37,8.385L16,28,28,16Z"
+            transform="translate(2 2)"
+          />
+        </g>
+      </g>
+
+      <!-- 帰国者・接触者相談センターによる相談結果 -->
       <g class="aw" transform="matrix(1, 0, 0, 1, -3, -3)">
         <g class="a" transform="translate(3 840)">
           <rect class="ap" height="230" rx="4" width="542" />
@@ -1028,30 +1007,6 @@
             transform="translate(2 2)"
           />
         </g>
-      </g>
-      <g transform="translate(0 7)">
-        <text class="an" transform="translate(913 456)">
-          <tspan x="-84.051" y="0">043-238-9966</tspan>
-        </text>
-        <g transform="translate(800 434)">
-          <path class="d" d="M0,0H26V26H0Z" />
-          <path
-            class="e"
-            d="M6.922,11.439a16.411,16.411,0,0,0,7.139,7.139L16.444,16.2a1.077,1.077,0,0,1,1.1-.26,12.358,12.358,0,0,0,3.867.617A1.087,1.087,0,0,1,22.5,17.636v3.781A1.087,1.087,0,0,1,21.417,22.5,18.415,18.415,0,0,1,3,4.083,1.087,1.087,0,0,1,4.083,3H7.875A1.087,1.087,0,0,1,8.958,4.083a12.307,12.307,0,0,0,.617,3.867A1.087,1.087,0,0,1,9.3,9.056Z"
-            transform="translate(0.25 0.25)"
-          />
-        </g>
-      </g>
-      <text class="an" transform="translate(633 679)">
-        <tspan x="-79.555" y="0">043-238-9966</tspan>
-      </text>
-      <g transform="translate(520 656)">
-        <path class="d" d="M0,0H26V26H0Z" />
-        <path
-          class="e"
-          d="M6.922,11.439a16.411,16.411,0,0,0,7.139,7.139L16.444,16.2a1.077,1.077,0,0,1,1.1-.26,12.358,12.358,0,0,0,3.867.617A1.087,1.087,0,0,1,22.5,17.636v3.781A1.087,1.087,0,0,1,21.417,22.5,18.415,18.415,0,0,1,3,4.083,1.087,1.087,0,0,1,4.083,3H7.875A1.087,1.087,0,0,1,8.958,4.083a12.307,12.307,0,0,0,.617,3.867A1.087,1.087,0,0,1,9.3,9.056Z"
-          transform="translate(0.25 0.25)"
-        />
       </g>
     </g>
   </svg>
