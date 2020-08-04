@@ -1,0 +1,22 @@
+name: Renew monorail data
+
+on:
+  schedule:
+    - cron: '0 14 * * *'
+
+env:
+  TZ: Asia/Tokyo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: python3 version check
+      run: python3 -V
+
+    - name: python version check
+      run: python -V
+
