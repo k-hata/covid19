@@ -79,7 +79,7 @@
     "for Enterprises and Employees": "企業の皆様・はたらく皆様へ",
     "Twitter by mayor kumagai": "熊谷市長 Twitter",
     "Twitter by Chiba PR": "千葉市広報広聴課 Twitter",
-    "Government official website": "千葉市公式ホームページ",
+    "Government special website": "千葉市特設ページ",
     "About us": "当サイトについて",
     "Chiba pref edition": "千葉県版コロナ対策サイト"
   }
@@ -124,21 +124,9 @@ export default {
           divider: true
         },
         {
-          icon: 'parent',
-          title: this.$t('for Families with children'),
-          link: '/parent'
-        },
-        {
-          icon: 'mdi-domain',
-          title: this.$t('for Enterprises and Employees'),
-          link: '/worker'
-        },
-        {
-          icon: 'mdi-account-multiple',
-          title: this.$t('for Citizens'),
+          title: this.$t('Government special website'),
           link:
-            'https://www.city.chiba.jp/hokenfukushi/kenkou/kikaku/kansensyoujyouhou.html',
-          divider: true
+            'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/kansensyoujyouhou.html'
         },
         {
           icon: 'mdi-twitter',
@@ -153,10 +141,6 @@ export default {
         {
           title: this.$t('About us'),
           link: '/about'
-        },
-        {
-          title: this.$t('Government official website'),
-          link: 'https://www.city.chiba.jp/'
         },
         {
           title: this.$t('Chiba pref edition'),
