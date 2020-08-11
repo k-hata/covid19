@@ -181,6 +181,7 @@ export default {
         'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/covid-19/opendata.html',
       monorailGraphOption: {
         responsive: true,
+        maintainAspectRatio: false,
         legend: {
           display: true
         },
