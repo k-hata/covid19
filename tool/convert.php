@@ -109,7 +109,7 @@ function readQuerents() : array
 
 function readPatients() : array
 {
-    $data = xlsxToArray(__DIR__.'/downloads/01patient.xlsx', 'RAW', 'A2:E365', 'A1:E1');
+    $data = xlsxToArray(__DIR__.'/downloads/01patient.xlsx', 'RAW', 'A2:E9999', 'A1:E1');
 
     return [
       'date' => xlsxToArray(__DIR__.'/downloads/01patient.xlsx', 'RAW', 'M1')[0][0],
