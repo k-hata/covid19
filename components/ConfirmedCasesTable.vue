@@ -65,10 +65,13 @@
     />
     <text
       class="black text"
-      transform="translate(12 100)"
+      transform="translate(5 100)"
       :dx="getAdjustX(検査実施人数)"
     >
       <tspan>{{ 検査実施人数 }}</tspan>
+      <tspan class="unit" dx="-3" />
+    </text>
+    <text class="black text" transform="translate(20 115)">
       <tspan class="unit" dx="-3">人</tspan>
     </text>
     <mask id="path-10-inside-2" fill="white">
