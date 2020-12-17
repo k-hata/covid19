@@ -108,11 +108,6 @@ export default {
           link: '/'
         },
         {
-          icon: 'covid',
-          title: this.$t('If you have any symptoms'),
-          link: '/flow'
-        },
-        {
           icon: 'mdi-shield-half-full',
           title: this.$t('All we have to do to prevent infection is simple.'),
           link: 'https://www.bowlgraphics.net/covid19'
