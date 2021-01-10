@@ -20,10 +20,10 @@
             <v-list three-line>
               <v-list-item>
                 <v-list-item-icon>
-                  <v-icon> mdi-phone </v-icon>
+                  <v-icon>mdi-phone</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="display-1">
+                  <v-list-item-title class="wrap" :class="phoneStyle">
                     043-238-9966
                   </v-list-item-title>
                   <v-list-item-subtitle>
@@ -33,10 +33,10 @@
               </v-list-item>
               <v-list-item>
                 <v-list-item-icon>
-                  <v-icon> mdi-fax </v-icon>
+                  <v-icon>mdi-fax</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="headline">
+                  <v-list-item-title class="wrap headline">
                     043-307-7274
                   </v-list-item-title>
                   <v-list-item-subtitle>
@@ -46,13 +46,13 @@
               </v-list-item>
               <v-list-item>
                 <v-list-item-icon>
-                  <v-icon> mdi-at </v-icon>
+                  <v-icon>mdi-at</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title :class="emailStyle">
+                  <v-list-item-title class="wrap" :class="emailStyle">
                     chibashicorona@city.chiba.lg.jp
                   </v-list-item-title>
-                  <v-list-item-subtitle> メールはこちら </v-list-item-subtitle>
+                  <v-list-item-subtitle>メールはこちら</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -60,14 +60,14 @@
         </v-col>
         <v-col cols="12" md="6">
           <v-card outlined>
-            <v-card-title> 千葉県発熱相談コールセンター </v-card-title>
+            <v-card-title>千葉県発熱相談コールセンター</v-card-title>
             <v-list three-line>
               <v-list-item>
                 <v-list-item-icon>
-                  <v-icon> mdi-phone </v-icon>
+                  <v-icon>mdi-phone</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="display-1">
+                  <v-list-item-title class="wrap" :class="phoneStyle">
                     03-6747-8414
                   </v-list-item-title>
                   <v-list-item-subtitle>
@@ -86,9 +86,19 @@
 <script>
 export default {
   computed: {
+    phoneStyle() {
+      return this.$vuetify.breakpoint.smAndDown ? 'headline' : 'display-1'
+    },
+
     emailStyle() {
-      return this.$vuetify.mobile ? 'title' : 'headline'
+      return this.$vuetify.breakpoint.smAndDown ? 'subtitle-1' : 'headline'
     },
   },
 }
 </script>
+
+<style scoped>
+.wrap {
+  white-space: normal;
+}
+</style>
