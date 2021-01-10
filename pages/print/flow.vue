@@ -9,8 +9,8 @@ export default {
   layout: 'print',
   head() {
     return {
-      title: '新型コロナウイルス感染症にかかる相談窓口について'
+      title: '新型コロナウイルス感染症にかかる相談窓口について',
     }
-  }
+  },
 }
 </script>

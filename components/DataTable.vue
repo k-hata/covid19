@@ -78,30 +78,30 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     titleId: {
       type: String,
-      default: ''
+      default: '',
     },
     chartData: {
       type: Object,
-      default: () => {}
+      default: () => {},
     },
     date: {
       type: String,
-      default: ''
+      default: '',
     },
     info: {
       type: Object,
       required: false,
-      default: () => {}
+      default: () => {},
     },
     url: {
       type: String,
       required: false,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>

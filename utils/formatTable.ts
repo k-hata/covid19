@@ -4,7 +4,7 @@ const headers = [
   { text: '日付', value: '日付' },
   { text: '居住地', value: '居住地' },
   { text: '年代', value: '年代' },
-  { text: '性別', value: '性別' }
+  { text: '性別', value: '性別' },
 ]
 
 type DataType = {
@@ -30,14 +30,14 @@ type TableDateType = {
 export default (data: DataType[]) => {
   const tableDate: TableDateType = {
     headers,
-    datasets: []
+    datasets: [],
   }
-  data.forEach(d => {
+  data.forEach((d) => {
     const TableRow: TableDataType = {
       日付: dayjs(d['リリース日']).format('MM/DD') ?? '不明',
       居住地: d['居住地'] ?? '不明',
       年代: d['年代'] ?? '不明',
-      性別: d['性別'] ?? '不明'
+      性別: d['性別'] ?? '不明',
     }
     tableDate.datasets.push(TableRow)
   })

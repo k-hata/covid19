@@ -26,15 +26,15 @@ import PrinterIcon from '@/static/printer.svg'
 
 export default {
   components: {
-    PrinterIcon
+    PrinterIcon,
   },
   props: {
     wrapperClass: {
       type: String,
       required: false,
-      default: ''
-    }
-  }
+      default: '',
+    },
+  },
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
   <data-view :title="title">
-    <div style="text-align: center;">
+    <div style="text-align: center">
       <span class="TheNumber">
         {{ `${number}` }}
       </span>
@@ -41,6 +41,6 @@ import DataView from '@/components/DataView.vue'
 
 export default {
   components: { DataView },
-  props: ['title', 'number', 'unit']
+  props: ['title', 'number', 'unit'],
 }
 </script>

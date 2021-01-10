@@ -36,49 +36,49 @@ export default {
     title: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     titleId: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     chartId: {
       type: String,
       required: false,
-      default: 'monorail-bar-chart'
+      default: 'monorail-bar-chart',
     },
     chartData: {
       type: Object,
       required: false,
-      default: () => {}
+      default: () => {},
     },
     chartOption: {
       type: Object,
       required: false,
-      default: () => {}
+      default: () => {},
     },
     date: {
       type: String,
       required: true,
-      default: ''
-    }
+      default: '',
+    },
   },
   computed: {
     displayData() {
       const colors = ['#a6e29f', '#63c765', '#008b41']
       return {
-        labels: this.chartData.datasets.map(d => d.label),
+        labels: this.chartData.datasets.map((d) => d.label),
         datasets: this.chartData.labels.map((label, i) => {
           return {
             label,
-            data: this.chartData.datasets.map(d => d.data[i]),
+            data: this.chartData.datasets.map((d) => d.data[i]),
             backgroundColor: colors[i],
-            borderWidth: 0
+            borderWidth: 0,
           }
-        })
+        }),
       }
-    }
-  }
+    },
+  },
 }
 </script>

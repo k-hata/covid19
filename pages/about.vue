@@ -1,8 +1,6 @@
 <template>
   <div class="About">
-    <h2 class="About-Heading">
-      当サイトについて
-    </h2>
+    <h2 class="About-Heading">当サイトについて</h2>
     <TextCard>
       <p>
         当サイトは新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために、
@@ -16,9 +14,7 @@
       </p>
     </TextCard>
     <TextCard title="ブラウザ環境について">
-      <p>
-        当サイトは以下の環境でご覧いただくことを推奨いたします。
-      </p>
+      <p>当サイトは以下の環境でご覧いただくことを推奨いたします。</p>
       <ul class="About-Browser-List">
         <li>Microsoft Edge 最新版</li>
         <li>Mozilla Firefox 最新版</li>
@@ -32,9 +28,7 @@
       </p>
     </TextCard>
     <TextCard title="当サイトへのリンクについて">
-      <p>
-        当サイトへのリンクは自由です。
-      </p>
+      <p>当サイトへのリンクは自由です。</p>
     </TextCard>
     <TextCard title="JavaScriptについて">
       <p>
@@ -157,13 +151,13 @@ import TextCard from '@/components/TextCard.vue'
 
 export default {
   components: {
-    TextCard
+    TextCard,
   },
   head() {
     return {
-      title: '当サイトについて'
+      title: '当サイトについて',
     }
-  }
+  },
 }
 </script>
 

@@ -21,23 +21,23 @@ export default {
     title: {
       type: String,
       required: true,
-      default: ''
+      default: '',
     },
     icon: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     date: {
       type: String,
       required: false,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     const formattedDate = convertDatetimeToISO8601Format(this.date)
     return { formattedDate }
-  }
+  },
 }
 </script>
 

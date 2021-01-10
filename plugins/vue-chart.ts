@@ -21,12 +21,12 @@ const VueChartPlugin: Plugin = () => {
       props: {
         options: {
           type: Object as PropType<ChartOptions>,
-          default: () => {}
-        }
+          default: () => {},
+        },
       },
       mounted(): void {
         this.renderChart(this.chartData, this.options)
-      }
+      },
     }
   )
 
@@ -38,12 +38,12 @@ const VueChartPlugin: Plugin = () => {
       props: {
         options: {
           type: Object,
-          default: () => {}
-        }
+          default: () => {},
+        },
       },
       mounted(): void {
         this.renderChart(this.chartData, this.options)
-      }
+      },
     }
   )
 }
