@@ -5,6 +5,19 @@
       :title="headerItem.title"
       :date="headerItem.date"
     />
+    <v-row>
+      <v-col cols="12">
+        <p class="body-2">
+          最新のニュース等は
+          <a
+            href="https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/kansensyoujyouhou.html"
+          >
+            千葉市の特設サイト
+          </a>
+          でご確認ください。
+        </p>
+      </v-col>
+    </v-row>
     <v-row class="DataBlock">
       <v-col cols="12" md="6" class="DataCard">
         <svg-card
