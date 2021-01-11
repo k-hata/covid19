@@ -32,7 +32,7 @@ function xlsxToArray(string $path, string $sheet_name, string $range, $header_ra
   $reader = new PhpOffice\PhpSpreadsheet\Reader\Xlsx();
   $spreadsheet = $reader->load($path);
   $sheet = $spreadsheet->getSheetByName($sheet_name);
-  $data =  new Collection($sheet->rangeToArray($range));
+  $data =  new Collection($sheet->rangeToArray($range,NULL,TRUE,FALSE,FALSE));
   $data = $data->map(function ($row) {
     return new Collection($row);
   });
@@ -62,7 +62,7 @@ function readContacts() : array
     'data' => $data->filter(function ($row) {
         return $row['曜日'] && $row['17-21時'];
       })->map(function ($row) {
-      $date = '2020-'.str_replace(['月', '日'], ['-', ''], $row['日付']);
+      $date = date('Y-m-d', ($row['日付'] - 25569) * 60 * 60 * 24);
       $carbon = Carbon::parse($date);
       $row['日付'] = $carbon->format('Y-m-d').'T08:00:00.000Z';
       $row['date'] = $carbon->format('Y-m-d');
@@ -92,7 +92,7 @@ function readQuerents() : array
 
       return $row['曜日'] && $row['17-翌9時'];
     })->map(function ($row) {
-      $date = '2020-'.str_replace(['月', '日'], ['-', ''], $row['日付']);
+      $date = date('Y-m-d', ($row['日付'] - 25569) * 60 * 60 * 24);
       $carbon = Carbon::parse($date);
       $row['日付'] = $carbon->format('Y-m-d').'T08:00:00.000Z';
       $row['date'] = $carbon->format('Y-m-d');
@@ -116,7 +116,7 @@ function readPatients() : array
       'data' => $data->filter(function ($row) {
         return $row['リリース日'];
       })->map(function ($row) {
-        $date = '2020-'.str_replace(['月', '日'], ['-', ''], $row['リリース日']);
+        $date = date('Y-m-d', ($row['リリース日'] - 25569) * 60 * 60 * 24);
         $carbon = Carbon::parse($date);
         $row['リリース日'] = $carbon->format('Y-m-d').'T08:00:00.000Z';
         $row['date'] = $carbon->format('Y-m-d');
@@ -154,9 +154,9 @@ function readInspections() : array{
   return [
     'date' => '2020/04/17/ 12:55', //TODO 現在のエクセルに更新日付がないので変更する必要あり
     'data' => $data-> map(function ($row) {
-      $date = str_replace(['月', '日'], ['/', ''], $row['判明日']);
+      $date = date('Y-m-d', ($row['判明日'] - 25569) * 60 * 60 * 24);
       $carbon = Carbon::parse($date);
-      $row['判明日'] = str_replace(['2020-'],[''],$carbon->format('m/d/yy'));      
+      $row['判明日'] = $carbon->format('m/d/Y'); 
       return $row;
     })    
   ];
