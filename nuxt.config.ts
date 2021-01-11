@@ -90,10 +90,6 @@ const config: Configuration = {
       src: '@/plugins/vue-chart.ts',
       ssr: true,
     },
-    {
-      src: '@/plugins/vuetify.ts',
-      ssr: true,
-    },
   ],
   /*
    ** Nuxt.js dev-modules
@@ -146,7 +142,7 @@ const config: Configuration = {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     defaultAssets: {
-      icons: false,
+      icons: 'mdi',
     },
   },
   googleAnalytics: {

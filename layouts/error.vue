@@ -3,7 +3,7 @@
     <h1 class="Error-Heading">
       {{ headingTitle }}
     </h1>
-    <div class="Error-BodyContainer">
+    <v-card class="Error-BodyContainer">
       <p class="Error-Body">
         アクセスしようとしたページが見つかりませんでした。<br />
         ページが移動または削除されたか、URLの入力間違いの可能性があります。
@@ -11,7 +11,7 @@
       <div class="Error-ButtonContainer">
         <NuxtLink to="/" class="Error-Button">トップページへ戻る</NuxtLink>
       </div>
-    </div>
+    </v-card>
   </div>
 </template>
 
@@ -52,7 +52,6 @@ export default Vue.extend({
   }
   &-BodyContainer {
     margin-top: 12px;
-    @include card-container();
     padding: 20px;
   }
   &-Body {

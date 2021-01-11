@@ -99,8 +99,6 @@
           :date="monorailGraph.date"
         />
       </v-col>
-    </v-row>
-    <v-row>
       <v-col cols="12">
         <contact />
       </v-col>
