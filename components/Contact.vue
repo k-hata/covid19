@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <v-icon size="24" left> mdi-access-point </v-icon>
+      <v-icon size="24" left>mdi-access-point</v-icon>
       相談窓口について
     </v-card-title>
     <v-card-text>
@@ -23,7 +23,7 @@
                   <v-icon>mdi-phone</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="wrap" :class="phoneStyle">
+                  <v-list-item-title class="wrap text-h5 text-md-h4">
                     043-238-9966
                   </v-list-item-title>
                   <v-list-item-subtitle>
@@ -36,7 +36,7 @@
                   <v-icon>mdi-fax</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="wrap headline">
+                  <v-list-item-title class="wrap text-h5">
                     043-307-7274
                   </v-list-item-title>
                   <v-list-item-subtitle>
@@ -49,7 +49,7 @@
                   <v-icon>mdi-at</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="wrap" :class="emailStyle">
+                  <v-list-item-title class="wrap text-subtitle-2 text-md-h5">
                     chibashicorona@city.chiba.lg.jp
                   </v-list-item-title>
                   <v-list-item-subtitle>メールはこちら</v-list-item-subtitle>
@@ -67,7 +67,7 @@
                   <v-icon>mdi-phone</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="wrap" :class="phoneStyle">
+                  <v-list-item-title class="wrap text-h5 text-md-h4">
                     03-6747-8414
                   </v-list-item-title>
                   <v-list-item-subtitle>
@@ -82,20 +82,6 @@
     </v-card-text>
   </v-card>
 </template>
-
-<script>
-export default {
-  computed: {
-    phoneStyle() {
-      return this.$vuetify.breakpoint.smAndDown ? 'headline' : 'display-1'
-    },
-
-    emailStyle() {
-      return this.$vuetify.breakpoint.smAndDown ? 'subtitle-1' : 'headline'
-    },
-  },
-}
-</script>
 
 <style scoped>
 .wrap {
