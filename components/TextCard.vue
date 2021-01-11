@@ -23,19 +23,19 @@ import { Vue, Prop, Component } from 'vue-property-decorator'
 export default class TextCard extends Vue {
   @Prop({
     default: '',
-    required: false
+    required: false,
   })
   title!: string
 
   @Prop({
     default: '',
-    required: false
+    required: false,
   })
   link!: string
 
   @Prop({
     default: '',
-    required: false
+    required: false,
   })
   body!: string
 }

@@ -33,52 +33,52 @@ export default {
     title: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     titleId: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     chartId: {
       type: String,
       required: false,
-      default: 'time-stacked-bar-chart'
+      default: 'time-stacked-bar-chart',
     },
     chartData: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     date: {
       type: String,
       required: true,
-      default: ''
+      default: '',
     },
     items: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     labels: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     unit: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     url: {
       type: String,
       required: false,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
-      dataKind: 'transition'
+      dataKind: 'transition',
     }
   },
   computed: {
@@ -87,13 +87,13 @@ export default {
         return {
           lText: this.sum(this.pickLastNumber(this.chartData)).toLocaleString(),
           sText: `${this.labels[this.labels.length - 1]} の合計`,
-          unit: this.unit
+          unit: this.unit,
         }
       }
       return {
         lText: this.sum(this.cumulativeSum(this.chartData)).toLocaleString(),
         sText: `${this.labels[this.labels.length - 1]} の全体累計`,
-        unit: this.unit
+        unit: this.unit,
       }
     },
     displayData() {
@@ -106,9 +106,9 @@ export default {
               label: this.items[index],
               data: item,
               backgroundColor: colorArray[index],
-              borderWidth: 0
+              borderWidth: 0,
             }
-          })
+          }),
         }
       }
       return {
@@ -118,16 +118,16 @@ export default {
             label: this.items[index],
             data: this.cumulative(item),
             backgroundColor: colorArray[index],
-            borderWidth: 0
+            borderWidth: 0,
           }
-        })
+        }),
       }
     },
     options() {
       const unit = this.unit
       const sumArray = this.eachArraySum(this.chartData)
       const data = this.chartData
-      const cumulativeData = this.chartData.map(item => {
+      const cumulativeData = this.chartData.map((item) => {
         return this.cumulative(item)
       })
       const cumulativeSumArray = this.eachArraySum(cumulativeData)
@@ -135,7 +135,7 @@ export default {
         tooltips: {
           displayColors: false,
           callbacks: {
-            label: tooltipItem => {
+            label: (tooltipItem) => {
               const labelText =
                 this.dataKind === 'transition'
                   ? `${sumArray[tooltipItem.index]}${unit}（市内: ${
@@ -151,13 +151,13 @@ export default {
                 /(\w+)\/(\w+)/,
                 '$1月$2日'
               )
-            }
-          }
+            },
+          },
         },
         responsive: true,
         maintainAspectRatio: false,
         legend: {
-          display: true
+          display: true,
         },
         scales: {
           xAxes: [
@@ -165,7 +165,7 @@ export default {
               id: 'day',
               stacked: true,
               gridLines: {
-                display: false
+                display: false,
               },
               ticks: {
                 fontSize: 9,
@@ -173,10 +173,10 @@ export default {
                 fontColor: '#808080',
                 maxRotation: 0,
                 minRotation: 0,
-                callback: label => {
+                callback: (label) => {
                   return label.split('/')[1]
-                }
-              }
+                },
+              },
             },
             {
               id: 'month',
@@ -185,14 +185,14 @@ export default {
                 drawOnChartArea: false,
                 drawTicks: true,
                 drawBorder: false,
-                tickMarkLength: 10
+                tickMarkLength: 10,
               },
               ticks: {
                 fontSize: 11,
                 fontColor: '#808080',
                 padding: 3,
                 fontStyle: 'bold',
-                callback: label => {
+                callback: (label) => {
                   const monthStringArry = [
                     'Jan',
                     'Feb',
@@ -205,17 +205,17 @@ export default {
                     'Sep',
                     'Oct',
                     'Nov',
-                    'Dec'
+                    'Dec',
                   ]
                   const month = monthStringArry.indexOf(label.split(' ')[0]) + 1
                   return month + '月'
-                }
+                },
               },
               type: 'time',
               time: {
-                unit: 'month'
-              }
-            }
+                unit: 'month',
+              },
+            },
           ],
           yAxes: [
             {
@@ -223,24 +223,24 @@ export default {
               stacked: true,
               gridLines: {
                 display: true,
-                color: '#E5E5E5'
+                color: '#E5E5E5',
               },
               ticks: {
                 suggestedMin: 0,
                 maxTicksLimit: 8,
-                fontColor: '#808080'
-              }
-            }
-          ]
-        }
+                fontColor: '#808080',
+              },
+            },
+          ],
+        },
       }
-    }
+    },
   },
   methods: {
     cumulative(array) {
       const cumulativeArray = []
       let patSum = 0
-      array.forEach(d => {
+      array.forEach((d) => {
         patSum += d
         cumulativeArray.push(patSum)
       })
@@ -252,12 +252,12 @@ export default {
       })
     },
     pickLastNumber(chartDataArray) {
-      return chartDataArray.map(array => {
+      return chartDataArray.map((array) => {
         return array[array.length - 1]
       })
     },
     cumulativeSum(chartDataArray) {
-      return chartDataArray.map(array => {
+      return chartDataArray.map((array) => {
         return array.reduce((acc, cur) => {
           return acc + cur
         })
@@ -269,8 +269,8 @@ export default {
         sumArray.push(chartDataArray[0][i] + chartDataArray[1][i])
       }
       return sumArray
-    }
-  }
+    },
+  },
 }
 </script>
 

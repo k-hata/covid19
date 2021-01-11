@@ -35,12 +35,12 @@ type LocalData = {
 export default Vue.extend({
   components: {
     ScaleLoader,
-    SideNavigation
+    SideNavigation,
   },
   data(): LocalData {
     return {
       isOpenNavigation: false,
-      loading: true
+      loading: true,
     }
   },
   mounted() {
@@ -52,7 +52,7 @@ export default Vue.extend({
     },
     hideNavigation(): void {
       this.isOpenNavigation = false
-    }
+    },
   },
   head(): MetaInfo {
     const { htmlAttrs } = this.$nuxtI18nSeo()
@@ -61,11 +61,11 @@ export default Vue.extend({
       link: [
         {
           rel: 'canonical',
-          href: `https://stopcovid19.code4chiba.org${this.$route.path}`
-        }
-      ]
+          href: `https://stopcovid19.code4chiba.org${this.$route.path}`,
+        },
+      ],
     }
-  }
+  },
 })
 </script>
 <style lang="scss">

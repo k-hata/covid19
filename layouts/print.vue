@@ -28,12 +28,8 @@
               <img src="/site-qr.svg" alt="QRコード" />
             </v-card>
             <v-card class="flex-shrink-0" flat tile color="transparent">
-              <p class="PrintMeta-Text">
-                ※最新の情報はWebページをご覧ください
-              </p>
-              <p class="PrintMeta-Link">
-                https://stopcovid19.code4chiba.org/
-              </p>
+              <p class="PrintMeta-Text">※最新の情報はWebページをご覧ください</p>
+              <p class="PrintMeta-Link">https://stopcovid19.code4chiba.org/</p>
             </v-card>
           </v-card>
         </v-col>
@@ -46,11 +42,11 @@
 import ScaleLoader from 'vue-spinner/src/ScaleLoader.vue'
 export default {
   components: {
-    ScaleLoader
+    ScaleLoader,
   },
   data() {
     return {
-      loading: true
+      loading: true,
     }
   },
   mounted() {
@@ -63,7 +59,7 @@ export default {
   methods: {
     print() {
       window.print()
-    }
+    },
   },
   head() {
     return {
@@ -71,17 +67,17 @@ export default {
         {
           hid: 'robots',
           name: 'robots',
-          content: 'noindex'
-        }
+          content: 'noindex',
+        },
       ],
       link: [
         {
           rel: 'canonical',
-          href: `https://stopcovid19.code4chiba.org${this.$route.path}`
-        }
-      ]
+          href: `https://stopcovid19.code4chiba.org${this.$route.path}`,
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 <style lang="scss">

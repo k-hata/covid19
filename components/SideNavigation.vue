@@ -91,13 +91,13 @@ import ListItem from '@/components/ListItem'
 
 export default {
   components: {
-    ListItem
+    ListItem,
   },
   props: {
     isNaviOpen: {
       type: Boolean,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     items() {
@@ -105,45 +105,45 @@ export default {
         {
           icon: 'mdi-chart-timeline-variant',
           title: this.$t('The latest updates'),
-          link: '/'
+          link: '/',
         },
         {
           icon: 'mdi-shield-half-full',
           title: this.$t('All we have to do to prevent infection is simple.'),
-          link: 'https://www.bowlgraphics.net/covid19'
+          link: 'https://www.bowlgraphics.net/covid19',
         },
         {
           icon: 'mdi-silverware-variant',
           title: this.$t('Support with takeout'),
           link: 'https://togo.code4chiba.org/',
-          divider: true
+          divider: true,
         },
         {
           title: this.$t('Government special website'),
           link:
-            'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/kansensyoujyouhou.html'
+            'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/kansensyoujyouhou.html',
         },
         {
           icon: 'mdi-twitter',
           title: this.$t('Twitter by mayor kumagai'),
-          link: 'https://twitter.com/kumagai_chiba'
+          link: 'https://twitter.com/kumagai_chiba',
         },
         {
           icon: 'mdi-twitter',
           title: this.$t('Twitter by Chiba PR'),
-          link: 'https://twitter.com/Chiba_city_PR'
+          link: 'https://twitter.com/Chiba_city_PR',
         },
         {
           title: this.$t('About us'),
-          link: '/about'
+          link: '/about',
         },
         {
           title: this.$t('Chiba pref edition'),
           link: 'https://covid19.civictech.chiba.jp/',
-          divider: true
-        }
+          divider: true,
+        },
       ]
-    }
+    },
   },
   methods: {
     openNavi() {
@@ -151,8 +151,8 @@ export default {
     },
     closeNavi() {
       this.$emit('closeNavi')
-    }
-  }
+    },
+  },
 }
 </script>
 

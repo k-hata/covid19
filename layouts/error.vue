@@ -5,12 +5,11 @@
     </h1>
     <div class="Error-BodyContainer">
       <p class="Error-Body">
-        アクセスしようとしたページが見つかりませんでした。<br />ページが移動または削除されたか、URLの入力間違いの可能性があります。
+        アクセスしようとしたページが見つかりませんでした。<br />
+        ページが移動または削除されたか、URLの入力間違いの可能性があります。
       </p>
       <div class="Error-ButtonContainer">
-        <NuxtLink to="/" class="Error-Button">
-          トップページへ戻る
-        </NuxtLink>
+        <NuxtLink to="/" class="Error-Button">トップページへ戻る</NuxtLink>
       </div>
     </div>
   </div>
@@ -24,8 +23,8 @@ export default Vue.extend({
   props: {
     error: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {
     isNotFound(): boolean {
@@ -35,8 +34,8 @@ export default Vue.extend({
       return this.isNotFound
         ? 'このページはご利用いただけません'
         : '現在ご利用できません'
-    }
-  }
+    },
+  },
 })
 </script>
 
