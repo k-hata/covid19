@@ -226,6 +226,9 @@ $default-boxdiff: 35px;
     span.unit {
       @include font-size($fz);
     }
+    &.gray {
+      border: px2vw($bdw, $vw) solid $gray-3;
+    }
   }
   .box {
     margin-top: px2vw($bdw, $vw);
