@@ -24,13 +24,19 @@
     </v-row>
     <v-row class="DataBlock">
       <v-col cols="12" md="6" class="DataCard">
-        <svg-card
+        <data-view
+          class="ConfirmedCaseCard"
           title="検査陽性者の状況"
-          :title-id="'details-of-confirmed-cases'"
+          title-id="details-of-confirmed-cases"
           :date="Data.inspections_summary.date"
         >
+          <template v-slot:button>
+            <p class="Graph-Desc">
+              （注）市内において疑い例または患者の濃厚接触者として検査を行ったものについて掲載
+            </p>
+          </template>
           <confirmed-cases-table v-bind="confirmedCases" />
-        </svg-card>
+        </data-view>
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
         <time-bar-chart
@@ -112,7 +118,7 @@ import TimeBarChart from '@/components/TimeBarChart.vue'
 import MonorailBarChart from '@/components/MonorailBarChart.vue'
 import TimeStackedBarChart from '@/components/TimeStackedBarChart.vue'
 import DataTable from '@/components/DataTable.vue'
-import SvgCard from '@/components/SvgCard.vue'
+import DataView from '@/components/DataView.vue'
 import ConfirmedCasesTable from '@/components/ConfirmedCasesTable.vue'
 import Contact from '@/components/Contact.vue'
 
@@ -131,7 +137,7 @@ export default {
     MonorailBarChart,
     TimeStackedBarChart,
     DataTable,
-    SvgCard,
+    DataView,
     ConfirmedCasesTable,
     Contact,
   },
@@ -262,6 +268,15 @@ export default {
 
   .ExternalLinkIcon {
     vertical-align: text-bottom;
+  }
+}
+
+.ConfirmedCaseCard {
+  .Graph-Desc {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: $gray-3;
   }
 }
 </style>
