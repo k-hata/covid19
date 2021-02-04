@@ -86,13 +86,14 @@
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
         <time-bar-chart
-          title="帰国者・接触者相談センター件数"
+          title="感染症相談センター件数"
           :title-id="'number-of-reports-to-covid19-consultation-desk'"
           :chart-id="'time-bar-chart-querents'"
           :chart-data="querentsGraph"
           :date="Data.querents.date"
           :unit="'件'"
           :url="openDataUrl"
+          description="旧)新型コロナウイルス感染症帰国者・接触者相談センター"
         />
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
