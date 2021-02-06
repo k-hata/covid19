@@ -56,7 +56,7 @@ function xlsxToArray(string $path, string $sheet_name, string $range, $header_ra
 function readContacts() : array
 {
 
-  $data = xlsxToArray(__DIR__.'/downloads/04callcenter.xlsx', 'Sheet1', 'A2:E365', 'A1:E1');
+  $data = xlsxToArray(__DIR__.'/downloads/04callcenter.xlsx', 'Sheet1', 'A2:E999', 'A1:E1');
   return [
     'date' => xlsxToArray(__DIR__.'/downloads/04callcenter.xlsx', 'Sheet1', 'H1')[0][0],
     'data' => $data->filter(function ($row) {
@@ -85,7 +85,7 @@ function readContacts() : array
  */
 function readQuerents() : array
 {
-  $data = xlsxToArray(__DIR__.'/downloads/05returnee.xlsx', 'RAW', 'A2:D365', 'A1:D1');
+  $data = xlsxToArray(__DIR__.'/downloads/05returnee.xlsx', 'RAW', 'A2:D999', 'A1:D1');
 
   return [
     'date' => xlsxToArray(__DIR__.'/downloads/05returnee.xlsx', 'RAW', 'H1')[0][0],
@@ -110,7 +110,7 @@ function readQuerents() : array
 
 function readPatients() : array
 {
-    $data = xlsxToArray(__DIR__.'/downloads/01patient.xlsx', 'RAW', 'A2:E9999', 'A1:E1');
+    $data = xlsxToArray(__DIR__.'/downloads/01patient.xlsx', 'RAW', 'A2:E49999', 'A1:E1');
 
     return [
       'date' => xlsxToArray(__DIR__.'/downloads/01patient.xlsx', 'RAW', 'M1')[0][0],
@@ -146,7 +146,7 @@ function createSummary(array $patients) {
 }
 
 function readInspections() : array{
-  $data = xlsxToArray(__DIR__.'/downloads/03inspection.xlsx', '入力シート', 'A2:J365', 'A1:J1');
+  $data = xlsxToArray(__DIR__.'/downloads/03inspection.xlsx', '入力シート', 'A2:J999', 'A1:J1');
   $data = $data->filter(function ($row) {
     return $row['疑い例検査'] !== null;
   });
