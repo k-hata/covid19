@@ -19,8 +19,6 @@
   </data-view>
 </template>
 
-<style></style>
-
 <script>
 import dayjs from 'dayjs'
 

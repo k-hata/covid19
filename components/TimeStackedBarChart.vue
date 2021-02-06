@@ -10,7 +10,7 @@
       :chart-id="chartId"
       :chart-data="displayData"
       :options="options"
-      :height="240"
+      :height="280"
     />
     <template v-slot:infoPanel>
       <data-view-basic-info-panel
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+
 import DataView from '@/components/DataView.vue'
 import DataSelector from '@/components/DataSelector.vue'
 import DataViewBasicInfoPanel from '@/components/DataViewBasicInfoPanel.vue'
@@ -82,17 +84,38 @@ export default {
     }
   },
   computed: {
+    graphData() {
+      return [
+        this.chartData.map((d) => d.city),
+        this.chartData.map((d) => d.other),
+      ]
+    },
+    totalGraphData() {
+      return this.chartData.map((d) => d.city + d.other)
+    },
+    cumulativeGraphData() {
+      return [
+        this.chartData.map((d) => d.cumCity),
+        this.chartData.map((d) => d.cumOther),
+      ]
+    },
+    totalCumulativeGraphData() {
+      return this.chartData.map((d) => d.cumCity + d.cumOther)
+    },
     displayInfo() {
+      const lastUpdate = this.labels[this.labels.length - 1]
       if (this.dataKind === 'transition') {
         return {
-          lText: this.sum(this.pickLastNumber(this.chartData)).toLocaleString(),
-          sText: `${this.labels[this.labels.length - 1]} の合計`,
+          lText: this.sum(this.pickLastNumber(this.graphData)).toLocaleString(),
+          sText: `${lastUpdate} の合計`,
           unit: this.unit,
         }
       }
       return {
-        lText: this.sum(this.cumulativeSum(this.chartData)).toLocaleString(),
-        sText: `${this.labels[this.labels.length - 1]} の全体累計`,
+        lText: this.sum(
+          this.pickLastNumber(this.cumulativeGraphData)
+        ).toLocaleString(),
+        sText: `${lastUpdate} の全体累計`,
         unit: this.unit,
       }
     },
@@ -100,11 +123,13 @@ export default {
       const colorArray = ['#00A040', '#00D154']
       if (this.dataKind === 'transition') {
         return {
-          labels: this.labels,
-          datasets: this.chartData.map((item, index) => {
+          labels: this.chartData.map((d) => {
+            return d.label
+          }),
+          datasets: this.graphData.map((d, index) => {
             return {
               label: this.items[index],
-              data: item,
+              data: d,
               backgroundColor: colorArray[index],
               borderWidth: 0,
             }
@@ -112,11 +137,13 @@ export default {
         }
       }
       return {
-        labels: this.labels,
-        datasets: this.chartData.map((item, index) => {
+        labels: this.chartData.map((d) => {
+          return d.label
+        }),
+        datasets: this.cumulativeGraphData.map((d, index) => {
           return {
             label: this.items[index],
-            data: this.cumulative(item),
+            data: d,
             backgroundColor: colorArray[index],
             borderWidth: 0,
           }
@@ -125,12 +152,6 @@ export default {
     },
     options() {
       const unit = this.unit
-      const sumArray = this.eachArraySum(this.chartData)
-      const data = this.chartData
-      const cumulativeData = this.chartData.map((item) => {
-        return this.cumulative(item)
-      })
-      const cumulativeSumArray = this.eachArraySum(cumulativeData)
       return {
         tooltips: {
           displayColors: false,
@@ -138,19 +159,20 @@ export default {
             label: (tooltipItem) => {
               const labelText =
                 this.dataKind === 'transition'
-                  ? `${sumArray[tooltipItem.index]}${unit}（市内: ${
-                      data[0][tooltipItem.index]
-                    }/その他: ${data[1][tooltipItem.index]}）`
-                  : `${cumulativeSumArray[tooltipItem.index]}${unit}（市内: ${
-                      cumulativeData[0][tooltipItem.index]
-                    }/その他: ${cumulativeData[1][tooltipItem.index]}）`
+                  ? `${this.totalGraphData[tooltipItem.index]}${unit}（市内: ${
+                      this.graphData[0][tooltipItem.index]
+                    }/その他: ${this.graphData[1][tooltipItem.index]}）`
+                  : `${
+                      this.totalCumulativeGraphData[tooltipItem.index]
+                    }${unit}（市内: ${
+                      this.cumulativeGraphData[0][tooltipItem.index]
+                    }/その他: ${
+                      this.cumulativeGraphData[1][tooltipItem.index]
+                    }）`
               return labelText
             },
             title(tooltipItem, data) {
-              return data.labels[tooltipItem[0].index].replace(
-                /(\w+)\/(\w+)/,
-                '$1月$2日'
-              )
+              return data.labels[tooltipItem[0].index]
             },
           },
         },
@@ -174,7 +196,7 @@ export default {
                 maxRotation: 0,
                 minRotation: 0,
                 callback: (label) => {
-                  return label.split('/')[1]
+                  return dayjs(label).date()
                 },
               },
             },
@@ -237,15 +259,6 @@ export default {
     },
   },
   methods: {
-    cumulative(array) {
-      const cumulativeArray = []
-      let patSum = 0
-      array.forEach((d) => {
-        patSum += d
-        cumulativeArray.push(patSum)
-      })
-      return cumulativeArray
-    },
     sum(array) {
       return array.reduce((acc, cur) => {
         return acc + cur
@@ -255,20 +268,6 @@ export default {
       return chartDataArray.map((array) => {
         return array[array.length - 1]
       })
-    },
-    cumulativeSum(chartDataArray) {
-      return chartDataArray.map((array) => {
-        return array.reduce((acc, cur) => {
-          return acc + cur
-        })
-      })
-    },
-    eachArraySum(chartDataArray) {
-      const sumArray = []
-      for (let i = 0; i < chartDataArray[0].length; i++) {
-        sumArray.push(chartDataArray[0][i] + chartDataArray[1][i])
-      }
-      return sumArray
     },
   },
 }
