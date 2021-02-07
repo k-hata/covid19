@@ -7,7 +7,7 @@
       :chart-id="chartId"
       :chart-data="displayData"
       :options="displayOption"
-      :height="240"
+      :height="280"
     />
     <template v-slot:infoPanel>
       <data-view-basic-info-panel
@@ -19,9 +19,9 @@
   </data-view>
 </template>
 
-<style></style>
-
 <script>
+import dayjs from 'dayjs'
+
 import DataView from '@/components/DataView.vue'
 import DataSelector from '@/components/DataSelector.vue'
 import DataViewBasicInfoPanel from '@/components/DataViewBasicInfoPanel.vue'
@@ -60,6 +60,11 @@ export default {
       default: '',
     },
     url: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    description: {
       type: String,
       required: false,
       default: '',
@@ -140,15 +145,10 @@ export default {
           displayColors: false,
           callbacks: {
             label(tooltipItem) {
-              const labelText =
-                parseInt(tooltipItem.value).toLocaleString() + unit
-              return labelText
+              return parseInt(tooltipItem.value).toLocaleString() + unit
             },
             title(tooltipItem, data) {
-              return data.labels[tooltipItem[0].index].replace(
-                /(\w+)\/(\w+)/,
-                '$1月$2日'
-              )
+              return data.labels[tooltipItem[0].index]
             },
           },
         },
@@ -172,7 +172,7 @@ export default {
                 maxRotation: 0,
                 minRotation: 0,
                 callback: (label) => {
-                  return label.split('/')[1]
+                  return dayjs(label).date()
                 },
               },
             },
@@ -194,7 +194,7 @@ export default {
                   display: true,
                 },
                 callback: (label) => {
-                  const monthStringArry = [
+                  const monthStrings = [
                     'Jan',
                     'Feb',
                     'Mar',
@@ -208,7 +208,7 @@ export default {
                     'Nov',
                     'Dec',
                   ]
-                  const month = monthStringArry.indexOf(label.split(' ')[0]) + 1
+                  const month = monthStrings.indexOf(label.split(' ')[0]) + 1
                   return month + '月'
                 },
               },

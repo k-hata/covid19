@@ -28,7 +28,7 @@
           class="ConfirmedCaseCard"
           title="検査陽性者の状況"
           title-id="details-of-confirmed-cases"
-          :date="Data.inspections_summary.date"
+          :date="Data.inspections.date"
         >
           <template v-slot:button>
             <p class="Graph-Desc">
@@ -66,7 +66,7 @@
           :title-id="'number-of-tested'"
           :chart-id="'time-stacked-bar-chart-inspections'"
           :chart-data="inspectionsGraph"
-          :date="Data.inspections_summary.date"
+          :date="Data.inspections.date"
           :items="inspectionsItems"
           :labels="inspectionsLabels"
           :unit="'件'"
@@ -86,13 +86,14 @@
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
         <time-bar-chart
-          title="帰国者・接触者相談センター件数"
+          title="感染症相談センター件数"
           :title-id="'number-of-reports-to-covid19-consultation-desk'"
           :chart-id="'time-bar-chart-querents'"
           :chart-data="querentsGraph"
           :date="Data.querents.date"
           :unit="'件'"
           :url="openDataUrl"
+          description="旧)新型コロナウイルス感染症帰国者・接触者相談センター"
         />
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
@@ -124,6 +125,10 @@ import Contact from '@/components/Contact.vue'
 
 import formatGraph from '@/utils/formatGraph'
 import formatTable from '@/utils/formatTable'
+import {
+  formatInspectionLabel,
+  formatInspectionGraph,
+} from '@/utils/formatInspection'
 import formatConfirmedCases from '@/utils/formatConfirmedCases'
 
 import Data from '@/data/data.json'
@@ -153,20 +158,12 @@ export default {
     // 千葉都市モノレールの利用者数の推移
     const monorailGraph = MonorailData
     // 検査実施日別状況
-    const inspectionsGraph = [
-      Data.inspections_summary.data['市内'],
-      Data.inspections_summary.data['その他'],
-    ]
     const inspectionsItems = [
       '市内発生（疑い例・接触者調査）',
       'その他（チャーター便・クルーズ便）',
     ]
-    const inspectionsLabels = Data.inspections_summary.labels
-    // 死亡者数
-    // #MEMO: 今後使う可能性あるので一時コメントアウト
-    // const fatalitiesTable = formatTable(
-    //   Data.patients.data.filter(patient => patient['備考'] === '死亡')
-    // )
+    const inspectionsLabels = formatInspectionLabel(Data.inspections.data)
+    const inspectionsGraph = formatInspectionGraph(Data.inspections.data)
     // 検査陽性者の状況
     const confirmedCases = formatConfirmedCases(Data.main_summary)
 
@@ -174,7 +171,7 @@ export default {
       lText: patientsGraph[
         patientsGraph.length - 1
       ].cumulative.toLocaleString(),
-      sText: patientsGraph[patientsGraph.length - 1].label + 'の累計',
+      sText: patientsGraph[patientsGraph.length - 1].label + ' の累計',
       unit: '人',
     }
 
