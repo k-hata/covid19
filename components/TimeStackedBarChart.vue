@@ -84,20 +84,30 @@ export default {
     }
   },
   computed: {
+    hasOtherData() {
+      return this.sum(this.chartData.map((d) => d.other)) > 0
+    },
+
     graphData() {
-      return [
-        this.chartData.map((d) => d.city),
-        this.chartData.map((d) => d.other),
-      ]
+      const data = [this.chartData.map((d) => d.city)]
+
+      if (this.hasOtherData) {
+        data.push(this.chartData.map((d) => d.other))
+      }
+
+      return data
     },
     totalGraphData() {
       return this.chartData.map((d) => d.city + d.other)
     },
     cumulativeGraphData() {
-      return [
-        this.chartData.map((d) => d.cumCity),
-        this.chartData.map((d) => d.cumOther),
-      ]
+      const data = [this.chartData.map((d) => d.cumCity)]
+
+      if (this.hasOtherData) {
+        data.push(this.chartData.map((d) => d.cumOther))
+      }
+
+      return data
     },
     totalCumulativeGraphData() {
       return this.chartData.map((d) => d.cumCity + d.cumOther)
@@ -157,19 +167,26 @@ export default {
           displayColors: false,
           callbacks: {
             label: (tooltipItem) => {
-              const labelText =
+              const index = tooltipItem.index
+              const totalRef =
                 this.dataKind === 'transition'
-                  ? `${this.totalGraphData[tooltipItem.index]}${unit}（市内: ${
-                      this.graphData[0][tooltipItem.index]
-                    }/その他: ${this.graphData[1][tooltipItem.index]}）`
-                  : `${
-                      this.totalCumulativeGraphData[tooltipItem.index]
-                    }${unit}（市内: ${
-                      this.cumulativeGraphData[0][tooltipItem.index]
-                    }/その他: ${
-                      this.cumulativeGraphData[1][tooltipItem.index]
-                    }）`
-              return labelText
+                  ? this.totalGraphData
+                  : this.totalCumulativeGraphData
+              let withBreakdown = ''
+
+              if (this.hasOtherData) {
+                const cityRef =
+                  this.dataKind === 'transition'
+                    ? this.graphData[0]
+                    : this.cumulativeGraphData[0]
+                const otherRef =
+                  this.dataKind === 'transition'
+                    ? this.graphData[1]
+                    : this.cumulativeGraphData[1]
+                withBreakdown = ` (市内: ${cityRef[index]} / その他: ${otherRef[index]})`
+              }
+
+              return `${totalRef[index]}${unit}${withBreakdown}`
             },
             title(tooltipItem, data) {
               return data.labels[tooltipItem[0].index]
@@ -179,7 +196,7 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
         legend: {
-          display: true,
+          display: this.hasOtherData,
         },
         scales: {
           xAxes: [
@@ -260,14 +277,10 @@ export default {
   },
   methods: {
     sum(array) {
-      return array.reduce((acc, cur) => {
-        return acc + cur
-      })
+      return array.reduce((acc, cur) => acc + cur)
     },
     pickLastNumber(chartDataArray) {
-      return chartDataArray.map((array) => {
-        return array[array.length - 1]
-      })
+      return chartDataArray.map((array) => array[array.length - 1])
     },
   },
 }
