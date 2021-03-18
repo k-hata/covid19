@@ -95,14 +95,10 @@ export default {
           divider: true,
         },
         {
+          icon: 'mdi-web',
           title: this.$t('Government special website'),
           link:
             'https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/kansensyoujyouhou.html',
-        },
-        {
-          icon: 'mdi-twitter',
-          title: this.$t('Twitter by mayor kumagai'),
-          link: 'https://twitter.com/kumagai_chiba',
         },
         {
           icon: 'mdi-twitter',
@@ -110,10 +106,13 @@ export default {
           link: 'https://twitter.com/Chiba_city_PR',
         },
         {
+          icon: 'mdi-information-outline',
           title: this.$t('About us'),
           link: '/about',
+          divider: true,
         },
         {
+          icon: 'mdi-link',
           title: this.$t('Chiba pref edition'),
           link: 'https://covid19.civictech.chiba.jp/',
           divider: true,
