@@ -26,16 +26,24 @@
       >
         mdi-close
       </v-icon>
-      <v-list :flat="true">
-        <v-container
+      <v-list :flat="true" class="mx-4">
+        <template
           v-for="(item, i) in items"
-          :key="i"
           class="SideNavigation-ListItemContainer"
-          @click="closeNavi"
         >
-          <ListItem :link="item.link" :icon="item.icon" :title="item.title" />
-          <v-divider v-show="item.divider" class="SideNavigation-Divider" />
-        </v-container>
+          <ListItem
+            :key="i"
+            :link="item.link"
+            :icon="item.icon"
+            :title="item.title"
+          />
+          <v-divider
+            v-show="item.divider"
+            :key="i"
+            class="SideNavigation-Divider"
+          />
+        </template>
+        <FeedbackListItem />
       </v-list>
       <div class="SideNavigation-Footer">
         <div class="SideNavigation-SocialLinkContainer">
@@ -63,11 +71,13 @@
 </template>
 
 <script>
+import FeedbackListItem from '@/components/FeedbackListItem'
 import ListItem from '@/components/ListItem'
 
 export default {
   components: {
     ListItem,
+    FeedbackListItem,
   },
   props: {
     isNaviOpen: {
@@ -109,12 +119,6 @@ export default {
           icon: 'mdi-information-outline',
           title: this.$t('About us'),
           link: '/about',
-          divider: true,
-        },
-        {
-          icon: 'mdi-link',
-          title: this.$t('Chiba pref edition'),
-          link: 'https://covid19.civictech.chiba.jp/',
           divider: true,
         },
       ]

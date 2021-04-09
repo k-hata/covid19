@@ -83,7 +83,10 @@ const config: Configuration = {
   /*
    ** Global CSS
    */
-  css: ['~assets/global.scss'],
+  css: [
+    '~assets/global.scss',
+    '~node_modules/@typeform/embed/build/css/popup.css',
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -145,8 +148,8 @@ const config: Configuration = {
             './node_modules/vuetify/dist/vuetify.js',
             './node_modules/vue-spinner/src/ScaleLoader.vue',
           ],
-          whitelist: ['html', 'body', 'nuxt-progress', 'DataCard'],
-          whitelistPatterns: [/(col|row)/],
+          whitelist: ['html', 'body', 'iframe', 'nuxt-progress', 'DataCard'],
+          whitelistPatterns: [/(col|row|typeform)/],
         }),
       ],
     },
