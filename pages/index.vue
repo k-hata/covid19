@@ -6,8 +6,8 @@
       :date="headerItem.date"
     />
     <v-row>
-      <v-col cols="12">
-        <p class="body-2">
+      <v-col cols="12" class="body-2">
+        <p>
           最新のニュース等は
           <a
             class="ExternalLink"
@@ -16,6 +16,19 @@
             rel="noopener"
           >
             千葉市の特設サイト
+            <v-icon class="ExternalLinkIcon" size="15">mdi-open-in-new</v-icon>
+          </a>
+          でご確認ください。
+        </p>
+        <p>
+          ワクチンについては
+          <a
+            class="ExternalLink"
+            href="https://www.city.chiba.jp/hokenfukushi/iryoeisei/seisaku/covid19-vaccine.html"
+            target="_blank"
+            rel="noopener"
+          >
+            新型コロナワクチン接種についてのお知らせ
             <v-icon class="ExternalLinkIcon" size="15">mdi-open-in-new</v-icon>
           </a>
           でご確認ください。
