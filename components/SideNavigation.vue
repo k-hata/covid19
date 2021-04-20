@@ -116,6 +116,11 @@ export default {
           link: 'https://twitter.com/Chiba_city_PR',
         },
         {
+          icon: 'mdi-needle',
+          title: this.$t('V-sys MHLW'),
+          link: 'https://v-sys.mhlw.go.jp/search/list.html?id=121002',
+        },
+        {
           icon: 'mdi-information-outline',
           title: this.$t('About us'),
           link: '/about',
