@@ -7,10 +7,10 @@
     <v-card-text>
       <ul>
         <li>
-          5/31 までまん延防止等重点措置が延長となりました。詳細は
+          6/20 までまん延防止等重点措置が延長となりました。詳細は
           <a
             class="ExternalLink"
-            href="https://www.pref.chiba.lg.jp/kenfuku/kansenshou/ncov/soti37.html"
+            href="https://www.pref.chiba.lg.jp/kenfuku/kansenshou/ncov/soti38.html"
             target="_blank"
             rel="noopener"
           >
