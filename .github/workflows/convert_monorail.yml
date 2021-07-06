@@ -21,7 +21,7 @@ jobs:
         run: pip install -r tool/requirements.txt
 
       - name: Convert    
-        run: cd tool && jupyter nbconvert --to notebook --execute --inplace make_monorail_json.ipynb && cd ..
+        run: cd tool && jupyter nbconvert --to notebook --execute --inplace make_monorail_json.ipynb && mv monorail.json ../data && cd ..
         env:
           SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
 
