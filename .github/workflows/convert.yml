@@ -16,6 +16,10 @@ jobs:
       with:
         php-version: '7.4' 
 
+    - uses: shivammathur/setup-php@2.9.0
+      with:
+        php-version: '7.4' 
+
     - name: Install dependencies
       run: cd tool && composer install --prefer-dist --no-progress --no-suggest && cd ..
 

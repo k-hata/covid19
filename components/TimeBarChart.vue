@@ -7,7 +7,7 @@
       :chart-id="chartId"
       :chart-data="displayData"
       :options="displayOption"
-      :height="240"
+      :height="280"
     />
     <template v-slot:infoPanel>
       <data-view-basic-info-panel
@@ -19,9 +19,9 @@
   </data-view>
 </template>
 
-<style></style>
-
 <script>
+import dayjs from 'dayjs'
+
 import DataView from '@/components/DataView.vue'
 import DataSelector from '@/components/DataSelector.vue'
 import DataViewBasicInfoPanel from '@/components/DataViewBasicInfoPanel.vue'
@@ -32,42 +32,47 @@ export default {
     title: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     titleId: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     chartId: {
       type: String,
       required: false,
-      default: 'time-bar-chart'
+      default: 'time-bar-chart',
     },
     chartData: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     date: {
       type: String,
       required: true,
-      default: ''
+      default: '',
     },
     unit: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     url: {
       type: String,
       required: false,
-      default: ''
-    }
+      default: '',
+    },
+    description: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   data() {
     return {
-      dataKind: 'transition'
+      dataKind: 'transition',
     }
   },
   computed: {
@@ -86,7 +91,7 @@ export default {
         return {
           lText: `${this.chartData.slice(-1)[0].transition.toLocaleString()}`,
           sText: `実績値（前日比：${this.displayTransitionRatio} ${this.unit}）`,
-          unit: this.unit
+          unit: this.unit,
         }
       }
       return {
@@ -96,41 +101,41 @@ export default {
         sText: `${this.chartData.slice(-1)[0].label} 累計値（前日比：${
           this.displayCumulativeRatio
         } ${this.unit}）`,
-        unit: this.unit
+        unit: this.unit,
       }
     },
     displayData() {
       if (this.dataKind === 'transition') {
         return {
-          labels: this.chartData.map(d => {
+          labels: this.chartData.map((d) => {
             return d.label
           }),
           datasets: [
             {
               label: this.dataKind,
-              data: this.chartData.map(d => {
+              data: this.chartData.map((d) => {
                 return d.transition
               }),
               backgroundColor: '#00B849',
-              borderWidth: 0
-            }
-          ]
+              borderWidth: 0,
+            },
+          ],
         }
       }
       return {
-        labels: this.chartData.map(d => {
+        labels: this.chartData.map((d) => {
           return d.label
         }),
         datasets: [
           {
             label: this.dataKind,
-            data: this.chartData.map(d => {
+            data: this.chartData.map((d) => {
               return d.cumulative
             }),
             backgroundColor: '#00B849',
-            borderWidth: 0
-          }
-        ]
+            borderWidth: 0,
+          },
+        ],
       }
     },
     displayOption() {
@@ -140,22 +145,17 @@ export default {
           displayColors: false,
           callbacks: {
             label(tooltipItem) {
-              const labelText =
-                parseInt(tooltipItem.value).toLocaleString() + unit
-              return labelText
+              return parseInt(tooltipItem.value).toLocaleString() + unit
             },
             title(tooltipItem, data) {
-              return data.labels[tooltipItem[0].index].replace(
-                /(\w+)\/(\w+)/,
-                '$1月$2日'
-              )
-            }
-          }
+              return data.labels[tooltipItem[0].index]
+            },
+          },
         },
         responsive: true,
         maintainAspectRatio: false,
         legend: {
-          display: false
+          display: false,
         },
         scales: {
           xAxes: [
@@ -163,7 +163,7 @@ export default {
               id: 'day',
               stacked: true,
               gridLines: {
-                display: false
+                display: false,
               },
               ticks: {
                 fontSize: 9,
@@ -171,10 +171,10 @@ export default {
                 fontColor: '#808080',
                 maxRotation: 0,
                 minRotation: 0,
-                callback: label => {
-                  return label.split('/')[1]
-                }
-              }
+                callback: (label) => {
+                  return dayjs(label).date()
+                },
+              },
             },
             {
               id: 'month',
@@ -183,7 +183,7 @@ export default {
                 drawOnChartArea: false,
                 drawTicks: true,
                 drawBorder: false,
-                tickMarkLength: 10
+                tickMarkLength: 10,
               },
               ticks: {
                 fontSize: 11,
@@ -191,10 +191,10 @@ export default {
                 padding: 3,
                 fontStyle: 'bold',
                 gridLines: {
-                  display: true
+                  display: true,
                 },
-                callback: label => {
-                  const monthStringArry = [
+                callback: (label) => {
+                  const monthStrings = [
                     'Jan',
                     'Feb',
                     'Mar',
@@ -206,17 +206,17 @@ export default {
                     'Sep',
                     'Oct',
                     'Nov',
-                    'Dec'
+                    'Dec',
                   ]
-                  const month = monthStringArry.indexOf(label.split(' ')[0]) + 1
+                  const month = monthStrings.indexOf(label.split(' ')[0]) + 1
                   return month + '月'
-                }
+                },
               },
               type: 'time',
               time: {
-                unit: 'month'
-              }
-            }
+                unit: 'month',
+              },
+            },
           ],
           yAxes: [
             {
@@ -224,18 +224,18 @@ export default {
               stacked: true,
               gridLines: {
                 display: true,
-                color: '#E5E5E5'
+                color: '#E5E5E5',
               },
               ticks: {
                 suggestedMin: 0,
                 maxTicksLimit: 8,
-                fontColor: '#808080'
-              }
-            }
-          ]
-        }
+                fontColor: '#808080',
+              },
+            },
+          ],
+        },
       }
-    }
+    },
   },
   methods: {
     formatDayBeforeRatio(dayBeforeRatio) {
@@ -248,7 +248,7 @@ export default {
         default:
           return `${dayBeforeRatioLocaleString}`
       }
-    }
-  }
+    },
+  },
 }
 </script>

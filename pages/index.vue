@@ -5,16 +5,26 @@
       :title="headerItem.title"
       :date="headerItem.date"
     />
-    <whats-new class="mb-4" :items="newsItems" />
+    <v-row>
+      <v-col cols="12">
+        <information />
+      </v-col>
+    </v-row>
     <v-row class="DataBlock">
       <v-col cols="12" md="6" class="DataCard">
-        <svg-card
+        <data-view
+          class="ConfirmedCaseCard"
           title="検査陽性者の状況"
-          :title-id="'details-of-confirmed-cases'"
-          :date="Data.inspections_summary.date"
+          title-id="details-of-confirmed-cases"
+          :date="Data.inspections.date"
         >
+          <template v-slot:button>
+            <p class="Graph-Desc">
+              （注）市内において疑い例または患者の濃厚接触者として検査を行ったものについて掲載
+            </p>
+          </template>
           <confirmed-cases-table v-bind="confirmedCases" />
-        </svg-card>
+        </data-view>
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
         <time-bar-chart
@@ -44,7 +54,7 @@
           :title-id="'number-of-tested'"
           :chart-id="'time-stacked-bar-chart-inspections'"
           :chart-data="inspectionsGraph"
-          :date="Data.inspections_summary.date"
+          :date="Data.inspections.date"
           :items="inspectionsItems"
           :labels="inspectionsLabels"
           :unit="'件'"
@@ -64,13 +74,14 @@
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
         <time-bar-chart
-          title="帰国者・接触者相談センター件数"
+          title="感染症相談センター件数"
           :title-id="'number-of-reports-to-covid19-consultation-desk'"
           :chart-id="'time-bar-chart-querents'"
           :chart-data="querentsGraph"
           :date="Data.querents.date"
           :unit="'件'"
           :url="openDataUrl"
+          description="旧)新型コロナウイルス感染症帰国者・接触者相談センター"
         />
       </v-col>
       <v-col cols="12" md="6" class="DataCard">
@@ -83,6 +94,9 @@
           :date="monorailGraph.date"
         />
       </v-col>
+      <v-col cols="12">
+        <contact />
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -92,16 +106,23 @@ import PageHeader from '@/components/PageHeader.vue'
 import TimeBarChart from '@/components/TimeBarChart.vue'
 import MonorailBarChart from '@/components/MonorailBarChart.vue'
 import TimeStackedBarChart from '@/components/TimeStackedBarChart.vue'
-import WhatsNew from '@/components/WhatsNew.vue'
-import Data from '@/data/data.json'
-import MonorailData from '@/data/monorail.json'
 import DataTable from '@/components/DataTable.vue'
+import DataView from '@/components/DataView.vue'
+import ConfirmedCasesTable from '@/components/ConfirmedCasesTable.vue'
+import Contact from '@/components/Contact.vue'
+import Information from '@/components/Information.vue'
+
 import formatGraph from '@/utils/formatGraph'
 import formatTable from '@/utils/formatTable'
+import {
+  formatInspectionLabel,
+  formatInspectionGraph,
+} from '@/utils/formatInspection'
 import formatConfirmedCases from '@/utils/formatConfirmedCases'
+
+import Data from '@/data/data.json'
+import MonorailData from '@/data/monorail.json'
 import News from '@/data/news.json'
-import SvgCard from '@/components/SvgCard.vue'
-import ConfirmedCasesTable from '@/components/ConfirmedCasesTable.vue'
 
 export default {
   components: {
@@ -109,10 +130,11 @@ export default {
     TimeBarChart,
     MonorailBarChart,
     TimeStackedBarChart,
-    WhatsNew,
     DataTable,
-    SvgCard,
-    ConfirmedCasesTable
+    DataView,
+    ConfirmedCasesTable,
+    Contact,
+    Information,
   },
   data() {
     // 感染者数グラフ
@@ -126,20 +148,12 @@ export default {
     // 千葉都市モノレールの利用者数の推移
     const monorailGraph = MonorailData
     // 検査実施日別状況
-    const inspectionsGraph = [
-      Data.inspections_summary.data['市内'],
-      Data.inspections_summary.data['その他']
-    ]
     const inspectionsItems = [
       '市内発生（疑い例・接触者調査）',
-      'その他（チャーター便・クルーズ便）'
+      'その他（チャーター便・クルーズ便）',
     ]
-    const inspectionsLabels = Data.inspections_summary.labels
-    // 死亡者数
-    // #MEMO: 今後使う可能性あるので一時コメントアウト
-    // const fatalitiesTable = formatTable(
-    //   Data.patients.data.filter(patient => patient['備考'] === '死亡')
-    // )
+    const inspectionsLabels = formatInspectionLabel(Data.inspections.data)
+    const inspectionsGraph = formatInspectionGraph(Data.inspections.data)
     // 検査陽性者の状況
     const confirmedCases = formatConfirmedCases(Data.main_summary)
 
@@ -147,8 +161,8 @@ export default {
       lText: patientsGraph[
         patientsGraph.length - 1
       ].cumulative.toLocaleString(),
-      sText: patientsGraph[patientsGraph.length - 1].label + 'の累計',
-      unit: '人'
+      sText: patientsGraph[patientsGraph.length - 1].label + ' の累計',
+      unit: '人',
     }
 
     return {
@@ -166,7 +180,7 @@ export default {
       headerItem: {
         icon: 'mdi-chart-timeline-variant',
         title: '千葉市内の最新感染動向',
-        date: Data.lastUpdate
+        date: Data.lastUpdate,
       },
       newsItems: News.newsItems,
       openDataUrl:
@@ -175,7 +189,7 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
         legend: {
-          display: true
+          display: true,
         },
         scales: {
           xAxes: [
@@ -183,20 +197,20 @@ export default {
               position: 'bottom',
               stacked: false,
               gridLines: {
-                display: true
+                display: true,
               },
               ticks: {
                 fontSize: 10,
                 maxTicksLimit: 20,
-                fontColor: '#808080'
-              }
-            }
+                fontColor: '#808080',
+              },
+            },
           ],
           yAxes: [
             {
               stacked: false,
               gridLines: {
-                display: true
+                display: true,
               },
               ticks: {
                 fontSize: 12,
@@ -204,10 +218,10 @@ export default {
                 fontColor: '#808080',
                 callback(value) {
                   return value.toFixed(2) + '%'
-                }
-              }
-            }
-          ]
+                },
+              },
+            },
+          ],
         },
         tooltips: {
           displayColors: false,
@@ -221,32 +235,35 @@ export default {
               const percentage = `${currentData.data[tooltipItem.index]}%`
 
               return `${monorailGraph.base_period}の利用者数との相対値: ${percentage}`
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     }
   },
   head() {
     return {
-      title: '千葉市内の最新感染動向'
+      title: '千葉市内の最新感染動向',
     }
-  }
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.MainPage {
-  .DataBlock {
-    margin: 20px -8px;
-    .DataCard {
-      @include largerThan($medium) {
-        padding: 10px;
-      }
-      @include lessThan($small) {
-        padding: 4px 8px;
-      }
-    }
+.ExternalLink {
+  text-decoration: none;
+
+  .ExternalLinkIcon {
+    vertical-align: text-bottom;
+  }
+}
+
+.ConfirmedCaseCard {
+  .Graph-Desc {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 12px;
+    color: $gray-3;
   }
 }
 </style>

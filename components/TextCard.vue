@@ -1,5 +1,5 @@
 <template>
-  <div class="TextCard">
+  <v-card class="TextCard">
     <h2 v-if="title" class="TextCard-Heading">
       <a v-if="link" :href="link" target="_blank" rel="noopener">
         {{ title }}
@@ -13,7 +13,7 @@
     <template v-else class="TextCard-Body">
       <slot />
     </template>
-  </div>
+  </v-card>
 </template>
 
 <script lang="ts">
@@ -23,19 +23,19 @@ import { Vue, Prop, Component } from 'vue-property-decorator'
 export default class TextCard extends Vue {
   @Prop({
     default: '',
-    required: false
+    required: false,
   })
   title!: string
 
   @Prop({
     default: '',
-    required: false
+    required: false,
   })
   link!: string
 
   @Prop({
     default: '',
-    required: false
+    required: false,
   })
   body!: string
 }
@@ -43,7 +43,6 @@ export default class TextCard extends Vue {
 
 <style lang="scss">
 .TextCard {
-  @include card-container();
   padding: 20px;
   margin-bottom: 20px;
   &-Heading {

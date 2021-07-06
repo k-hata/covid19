@@ -22,9 +22,7 @@
         rel="noopener"
       >
         オープンデータを参照する
-        <v-icon class="ExternalLinkIcon" size="15">
-          mdi-open-in-new
-        </v-icon>
+        <v-icon class="ExternalLinkIcon" size="15"> mdi-open-in-new </v-icon>
       </a>
       <v-spacer />
       <time :datetime="formattedDate">{{ date }} 更新</time>
@@ -73,7 +71,6 @@ export default class DataView extends Vue {
   }
 }
 .DataView {
-  @include card-container();
   height: 100%;
   &-content {
     height: auto !important;

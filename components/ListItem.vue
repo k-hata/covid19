@@ -49,24 +49,24 @@ import CovidIcon from '@/static/covid.svg'
 import ParentIcon from '@/static/parent.svg'
 
 @Component({
-  components: { CovidIcon, ParentIcon }
+  components: { CovidIcon, ParentIcon },
 })
 export default class ListItem extends Vue {
   @Prop({
     default: '',
-    required: false
+    required: false,
   })
   link!: string
 
   @Prop({
     default: '',
-    required: false
+    required: false,
   })
   icon!: string
 
   @Prop({
     default: '',
-    required: false
+    required: false,
   })
   title!: string
 

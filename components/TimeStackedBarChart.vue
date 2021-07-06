@@ -10,7 +10,7 @@
       :chart-id="chartId"
       :chart-data="displayData"
       :options="options"
-      :height="240"
+      :height="280"
     />
     <template v-slot:infoPanel>
       <data-view-basic-info-panel
@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
+
 import DataView from '@/components/DataView.vue'
 import DataSelector from '@/components/DataSelector.vue'
 import DataViewBasicInfoPanel from '@/components/DataViewBasicInfoPanel.vue'
@@ -33,131 +35,168 @@ export default {
     title: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     titleId: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     chartId: {
       type: String,
       required: false,
-      default: 'time-stacked-bar-chart'
+      default: 'time-stacked-bar-chart',
     },
     chartData: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     date: {
       type: String,
       required: true,
-      default: ''
+      default: '',
     },
     items: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     labels: {
       type: Array,
       required: false,
-      default: () => []
+      default: () => [],
     },
     unit: {
       type: String,
       required: false,
-      default: ''
+      default: '',
     },
     url: {
       type: String,
       required: false,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
-      dataKind: 'transition'
+      dataKind: 'transition',
     }
   },
   computed: {
+    hasOtherData() {
+      return this.sum(this.chartData.map((d) => d.other)) > 0
+    },
+
+    graphData() {
+      const data = [this.chartData.map((d) => d.city)]
+
+      if (this.hasOtherData) {
+        data.push(this.chartData.map((d) => d.other))
+      }
+
+      return data
+    },
+    totalGraphData() {
+      return this.chartData.map((d) => d.city + d.other)
+    },
+    cumulativeGraphData() {
+      const data = [this.chartData.map((d) => d.cumCity)]
+
+      if (this.hasOtherData) {
+        data.push(this.chartData.map((d) => d.cumOther))
+      }
+
+      return data
+    },
+    totalCumulativeGraphData() {
+      return this.chartData.map((d) => d.cumCity + d.cumOther)
+    },
     displayInfo() {
+      const lastUpdate = this.labels[this.labels.length - 1]
       if (this.dataKind === 'transition') {
         return {
-          lText: this.sum(this.pickLastNumber(this.chartData)).toLocaleString(),
-          sText: `${this.labels[this.labels.length - 1]} の合計`,
-          unit: this.unit
+          lText: this.sum(this.pickLastNumber(this.graphData)).toLocaleString(),
+          sText: `${lastUpdate} の合計`,
+          unit: this.unit,
         }
       }
       return {
-        lText: this.sum(this.cumulativeSum(this.chartData)).toLocaleString(),
-        sText: `${this.labels[this.labels.length - 1]} の全体累計`,
-        unit: this.unit
+        lText: this.sum(
+          this.pickLastNumber(this.cumulativeGraphData)
+        ).toLocaleString(),
+        sText: `${lastUpdate} の全体累計`,
+        unit: this.unit,
       }
     },
     displayData() {
       const colorArray = ['#00A040', '#00D154']
       if (this.dataKind === 'transition') {
         return {
-          labels: this.labels,
-          datasets: this.chartData.map((item, index) => {
+          labels: this.chartData.map((d) => {
+            return d.label
+          }),
+          datasets: this.graphData.map((d, index) => {
             return {
               label: this.items[index],
-              data: item,
+              data: d,
               backgroundColor: colorArray[index],
-              borderWidth: 0
+              borderWidth: 0,
             }
-          })
+          }),
         }
       }
       return {
-        labels: this.labels,
-        datasets: this.chartData.map((item, index) => {
+        labels: this.chartData.map((d) => {
+          return d.label
+        }),
+        datasets: this.cumulativeGraphData.map((d, index) => {
           return {
             label: this.items[index],
-            data: this.cumulative(item),
+            data: d,
             backgroundColor: colorArray[index],
-            borderWidth: 0
+            borderWidth: 0,
           }
-        })
+        }),
       }
     },
     options() {
       const unit = this.unit
-      const sumArray = this.eachArraySum(this.chartData)
-      const data = this.chartData
-      const cumulativeData = this.chartData.map(item => {
-        return this.cumulative(item)
-      })
-      const cumulativeSumArray = this.eachArraySum(cumulativeData)
       return {
         tooltips: {
           displayColors: false,
           callbacks: {
-            label: tooltipItem => {
-              const labelText =
+            label: (tooltipItem) => {
+              const index = tooltipItem.index
+              const totalRef =
                 this.dataKind === 'transition'
-                  ? `${sumArray[tooltipItem.index]}${unit}（市内: ${
-                      data[0][tooltipItem.index]
-                    }/その他: ${data[1][tooltipItem.index]}）`
-                  : `${cumulativeSumArray[tooltipItem.index]}${unit}（市内: ${
-                      cumulativeData[0][tooltipItem.index]
-                    }/その他: ${cumulativeData[1][tooltipItem.index]}）`
-              return labelText
+                  ? this.totalGraphData
+                  : this.totalCumulativeGraphData
+              let withBreakdown = ''
+
+              if (this.hasOtherData) {
+                const cityRef =
+                  this.dataKind === 'transition'
+                    ? this.graphData[0]
+                    : this.cumulativeGraphData[0]
+                const otherRef =
+                  this.dataKind === 'transition'
+                    ? this.graphData[1]
+                    : this.cumulativeGraphData[1]
+                withBreakdown = ` (市内: ${cityRef[index]} / その他: ${otherRef[index]})`
+              }
+
+              return `${totalRef[index]}${unit}${withBreakdown}`
             },
             title(tooltipItem, data) {
-              return data.labels[tooltipItem[0].index].replace(
-                /(\w+)\/(\w+)/,
-                '$1月$2日'
-              )
-            }
-          }
+              return data.labels[tooltipItem[0].index]
+            },
+          },
         },
         responsive: true,
         maintainAspectRatio: false,
         legend: {
-          display: true
+          display: this.hasOtherData,
         },
         scales: {
           xAxes: [
@@ -165,7 +204,7 @@ export default {
               id: 'day',
               stacked: true,
               gridLines: {
-                display: false
+                display: false,
               },
               ticks: {
                 fontSize: 9,
@@ -173,10 +212,10 @@ export default {
                 fontColor: '#808080',
                 maxRotation: 0,
                 minRotation: 0,
-                callback: label => {
-                  return label.split('/')[1]
-                }
-              }
+                callback: (label) => {
+                  return dayjs(label).date()
+                },
+              },
             },
             {
               id: 'month',
@@ -185,14 +224,14 @@ export default {
                 drawOnChartArea: false,
                 drawTicks: true,
                 drawBorder: false,
-                tickMarkLength: 10
+                tickMarkLength: 10,
               },
               ticks: {
                 fontSize: 11,
                 fontColor: '#808080',
                 padding: 3,
                 fontStyle: 'bold',
-                callback: label => {
+                callback: (label) => {
                   const monthStringArry = [
                     'Jan',
                     'Feb',
@@ -205,17 +244,17 @@ export default {
                     'Sep',
                     'Oct',
                     'Nov',
-                    'Dec'
+                    'Dec',
                   ]
                   const month = monthStringArry.indexOf(label.split(' ')[0]) + 1
                   return month + '月'
-                }
+                },
               },
               type: 'time',
               time: {
-                unit: 'month'
-              }
-            }
+                unit: 'month',
+              },
+            },
           ],
           yAxes: [
             {
@@ -223,54 +262,27 @@ export default {
               stacked: true,
               gridLines: {
                 display: true,
-                color: '#E5E5E5'
+                color: '#E5E5E5',
               },
               ticks: {
                 suggestedMin: 0,
                 maxTicksLimit: 8,
-                fontColor: '#808080'
-              }
-            }
-          ]
-        }
+                fontColor: '#808080',
+              },
+            },
+          ],
+        },
       }
-    }
+    },
   },
   methods: {
-    cumulative(array) {
-      const cumulativeArray = []
-      let patSum = 0
-      array.forEach(d => {
-        patSum += d
-        cumulativeArray.push(patSum)
-      })
-      return cumulativeArray
-    },
     sum(array) {
-      return array.reduce((acc, cur) => {
-        return acc + cur
-      })
+      return array.reduce((acc, cur) => acc + cur)
     },
     pickLastNumber(chartDataArray) {
-      return chartDataArray.map(array => {
-        return array[array.length - 1]
-      })
+      return chartDataArray.map((array) => array[array.length - 1])
     },
-    cumulativeSum(chartDataArray) {
-      return chartDataArray.map(array => {
-        return array.reduce((acc, cur) => {
-          return acc + cur
-        })
-      })
-    },
-    eachArraySum(chartDataArray) {
-      const sumArray = []
-      for (let i = 0; i < chartDataArray[0].length; i++) {
-        sumArray.push(chartDataArray[0][i] + chartDataArray[1][i])
-      }
-      return sumArray
-    }
-  }
+  },
 }
 </script>
 

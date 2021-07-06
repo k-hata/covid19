@@ -1,4 +1,6 @@
 import { Configuration } from '@nuxt/types'
+
+import i18n from './nuxt-i18n.config'
 const purgecss = require('@fullhuman/postcss-purgecss')
 const autoprefixer = require('autoprefixer')
 
@@ -9,7 +11,7 @@ const config: Configuration = {
    */
   head: {
     htmlAttrs: {
-      prefix: 'og: http://ogp.me/ns#'
+      prefix: 'og: http://ogp.me/ns#',
     },
     titleTemplate: '%s | 千葉市 新型コロナウイルス感染症対策サイト',
     meta: [
@@ -19,60 +21,60 @@ const config: Configuration = {
         hid: 'description',
         name: 'description',
         content:
-          '当サイトは新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために、Code for Chiba が開設したものです。'
+          '当サイトは新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために、Code for Chiba が開設したものです。',
       },
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: '千葉市 新型コロナウイルス感染症対策サイト'
+        content: '千葉市 新型コロナウイルス感染症対策サイト',
       },
       { hid: 'og:type', property: 'og:type', content: 'website' },
       {
         hid: 'og:url',
         property: 'og:url',
-        content: 'https://stopcovid19.code4chiba.org/'
+        content: 'https://stopcovid19.code4chiba.org/',
       },
       {
         hid: 'og:title',
         property: 'og:title',
-        content: '千葉市 新型コロナウイルス感染症対策サイト'
+        content: '千葉市 新型コロナウイルス感染症対策サイト',
       },
       {
         hid: 'og:description',
         property: 'og:description',
         content:
-          '当サイトは新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために、Code for Chiba が開設したものです。'
+          '当サイトは新型コロナウイルス感染症（COVID-19）に関する最新情報を提供するために、Code for Chiba が開設したものです。',
       },
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://stopcovid19.code4chiba.org/ogp.png'
+        content: 'https://stopcovid19.code4chiba.org/ogp.png',
       },
       {
         hid: 'twitter:card',
         name: 'twitter:card',
-        content: 'summary_large_image'
+        content: 'summary_large_image',
       },
       {
         hid: 'twitter:site',
         name: 'twitter:site',
-        content: '@code4chiba'
+        content: '@code4chiba',
       },
       {
         hid: 'twitter:creator',
         name: 'twitter:creator',
-        content: '@code4chiba'
+        content: '@code4chiba',
       },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://stopcovid19.code4chiba.org/ogp.png'
-      }
+        content: 'https://stopcovid19.code4chiba.org/ogp.png',
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' }
-    ]
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+    ],
   },
   /*
    ** Customize the progress-bar color
@@ -81,19 +83,18 @@ const config: Configuration = {
   /*
    ** Global CSS
    */
-  css: ['~assets/global.scss'],
+  css: [
+    '~assets/global.scss',
+    '~node_modules/@typeform/embed/build/css/popup.css',
+  ],
   /*
    ** Plugins to load before mounting the App
    */
   plugins: [
     {
       src: '@/plugins/vue-chart.ts',
-      ssr: true
+      ssr: true,
     },
-    {
-      src: '@/plugins/vuetify.ts',
-      ssr: true
-    }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -101,7 +102,7 @@ const config: Configuration = {
   buildModules: [
     '@nuxtjs/vuetify',
     '@nuxt/typescript-build',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-analytics',
   ],
   /*
    ** Nuxt.js modules
@@ -112,27 +113,10 @@ const config: Configuration = {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    [
-      'nuxt-i18n',
-      {
-        strategy: 'no_prefix',
-        locales: [
-          {
-            code: 'ja',
-            iso: 'ja-JP'
-          }
-        ],
-        defaultLocale: 'ja',
-        vueI18n: {
-          fallbackLocale: 'ja',
-          formatFallbackMessages: true
-        },
-        vueI18nLoader: true
-      }
-    ],
+    ['nuxt-i18n', i18n],
     'nuxt-svg-loader',
     'nuxt-purgecss',
-    ['vue-scrollto/nuxt', { duration: 1000, offset: -72 }]
+    ['vue-scrollto/nuxt', { duration: 1000, offset: -72 }],
   ],
   /*
    ** Axios module configuration
@@ -146,11 +130,11 @@ const config: Configuration = {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     defaultAssets: {
-      icons: false
-    }
+      icons: 'mdi',
+    },
   },
   googleAnalytics: {
-    id: 'UA-100716389-3'
+    id: 'UA-100716389-3',
   },
   build: {
     postcss: {
@@ -162,15 +146,13 @@ const config: Configuration = {
             './layouts/**/*.vue',
             './components/**/*.vue',
             './node_modules/vuetify/dist/vuetify.js',
-            './node_modules/vue-spinner/src/ScaleLoader.vue'
+            './node_modules/vue-spinner/src/ScaleLoader.vue',
           ],
-          whitelist: ['html', 'body', 'nuxt-progress', 'DataCard'],
-          whitelistPatterns: [/(col|row)/]
-        })
-      ]
+          whitelist: ['html', 'body', 'iframe', 'nuxt-progress', 'DataCard'],
+          whitelistPatterns: [/(col|row|typeform)/],
+        }),
+      ],
     },
-    // https://ja.nuxtjs.org/api/configuration-build/#hardsource
-    hardSource: process.env.NODE_ENV === 'development'
   },
   manifest: {
     name: '千葉市 新型コロナウイルス感染症対策サイト',
@@ -179,19 +161,19 @@ const config: Configuration = {
     display: 'standalone',
     Scope: '/',
     start_url: '/',
-    splash_pages: null
+    splash_pages: null,
   },
   generate: {
-    fallback: true
+    fallback: true,
   },
   // /*
   // ** hot read configuration for docker
   // */
   watchers: {
     webpack: {
-      poll: true
-    }
-  }
+      poll: true,
+    },
+  },
 }
 
 export default config
