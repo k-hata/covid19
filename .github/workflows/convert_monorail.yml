@@ -18,9 +18,7 @@ jobs:
         with:
           python-version: '3.6.9'
           architecture: x64
-
-    - name: convert
-      run: cd tool && jupyter nbconvert --to notebook --execute --inplace make_monorail_json.ipynb && cd ..
+        run: cd tool && jupyter nbconvert --to notebook --execute --inplace make_monorail_json.ipynb && cd ..
 
     - name: Git add & commit
       run: |
