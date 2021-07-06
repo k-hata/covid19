@@ -17,6 +17,13 @@ jobs:
           python-version: '3.6.9'
           architecture: x64
 
+      - name: Setup Jupyter lab    
+        run: pip install jupyterlab
+
+      - name: Setup Secret
+        env:
+          SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON }}
+
       - name: Convert    
         run: cd tool && jupyter nbconvert --to notebook --execute --inplace make_monorail_json.ipynb && cd ..
 
