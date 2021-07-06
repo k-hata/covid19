@@ -9,7 +9,7 @@ env:
 
 jobs:
   build:
-    runs-on: Ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -20,43 +20,31 @@ jobs:
           architecture: x64
         run: cd tool && jupyter nbconvert --to notebook --execute --inplace make_monorail_json.ipynb && cd ..
 
-    - name: Git add & commit
-      run: |
-        git config --local user.email "${{ secrets.EMAIL }}"
-        git config --local user.name "${{ secrets.NAME }}"
-        git status | grep "modified:   data/monorail.json" && git add data/monorail.json \
-          && git commit -m "update monorail.json: `date +'%Y-%m-%d %H:%M:%S'`"
+      - name: Git add & commit
+        run: |
+          git config --local user.email "${{ secrets.EMAIL }}"
+          git config --local user.name "${{ secrets.NAME }}"
+          git status | grep "modified:   data/monorail.json" && git add data/monorail.json \
+            && git commit -m "update monorail.json: `date +'%Y-%m-%d %H:%M:%S'`"
 
-    - name: Set variables
-      id: update_data
-      run: |
-        date=$(date +'%m/%d')
-        echo "::set-output name=date::$date"
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        title: monorailデータの反映(${{ steps.update_data.outputs.date }})
-        branch: feature/update-monorail-data
+      - name: Set variables
+        id: update_data
+        run: |
+          date=$(date +'%m/%d')
+          echo "::set-output name=date::$date"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: monorailデータの反映(${{ steps.update_data.outputs.date }})
+          branch: feature/update-monorail-data
 
-    - name: Notify to slack
-      uses: 8398a7/action-slack@v3
-      with:
-        status: ${{ job.status }}
-        author_name: Renew Monorail Data
-        fields: repo,commit,action,ref,author,workflow
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      if: ${{ failure() }}
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+      - name: Notify to slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: Renew Monorail Data
+          fields: repo,commit,action,ref,author,workflow
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: ${{ failure() }}
