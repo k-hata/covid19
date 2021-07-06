@@ -30,10 +30,11 @@ jobs:
           git config --local user.email "${{ secrets.EMAIL }}"
           git config --local user.name "${{ secrets.NAME }}"
           git status | grep "modified:   data/monorail.json" && git add data/monorail.json \
-            && git commit -m "update monorail.json: `date +'%Y-%m-%d %H:%M:%S'`"
+            && git commit -m "update monorail.json: `date +'%Y-%m-%d %H:%M:%S'`" \
+            && git reset
 
       - name: Set variables
-        id: update_data
+        id: update_monorail_data
         run: |
           date=$(date +'%m/%d')
           echo "::set-output name=date::$date"
