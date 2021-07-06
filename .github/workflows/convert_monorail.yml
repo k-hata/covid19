@@ -1,6 +1,8 @@
 name: Renew monorail data
 
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: '0 14 * * *'
 
 env:
   TZ: Asia/Tokyo
@@ -17,8 +19,8 @@ jobs:
           python-version: '3.6.9'
           architecture: x64
 
-    - name: Install dependencies
-      run: cd tool && python jupyter nbconvert --to notebook --execute --inplace make_monorail_json.ipynb && cd ..
+    - name: convert
+      run: cd tool && jupyter nbconvert --to notebook --execute --inplace make_monorail_json.ipynb && cd ..
 
     - name: Git add & commit
       run: |
