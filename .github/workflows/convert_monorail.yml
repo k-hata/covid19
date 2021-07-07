@@ -44,6 +44,13 @@ jobs:
         with:
           title: monorailデータの反映(${{ steps.update_data.outputs.date }})
           branch: feature/update-monorail-data
+          labels: automerge
+
+      - name: Auto Merge
+        uses: pascalgn/automerge-action@v0.14.2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MERGE_DELETE_BRANCH: true
 
       - name: Notify to slack
         uses: 8398a7/action-slack@v3
