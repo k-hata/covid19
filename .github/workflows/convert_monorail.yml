@@ -30,8 +30,8 @@ jobs:
           git config --local user.email "${{ secrets.EMAIL }}"
           git config --local user.name "${{ secrets.NAME }}"
           git status | grep "modified:   data/monorail.json" && git add data/monorail.json \
-            && git commit -m "update monorail.json: `date +'%Y-%m-%d %H:%M:%S'`" \
-            && git clean -f -x
+            && git commit -m "update monorail.json: `date +'%Y-%m-%d %H:%M:%S'`"
+          git clean -f -x
 
       - name: Set variables
         id: update_data
