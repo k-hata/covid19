@@ -50,7 +50,7 @@ jobs:
         uses: hmarr/auto-approve-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          pull-request-number: ${{ github.event.inputs.pullRequestNumber }}
+          pull-request-number: ${{ github.event.client_payload.PullRequestNumber }}
 
       - name: Auto Merge
         uses: pascalgn/automerge-action@v0.14.2
