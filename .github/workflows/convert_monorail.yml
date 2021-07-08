@@ -48,7 +48,7 @@ jobs:
 
       - name: Auto Approve
         uses: hmarr/auto-approve-action@v2
-        if: github.actor == 'dependabot[bot]'
+        if: github.actor == 'k-hata'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
