@@ -48,9 +48,9 @@ jobs:
 
       - name: Auto Approve
         uses: hmarr/auto-approve-action@v2
-        if: github.actor == 'github-actions[bot]'
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ github.event.inputs.pullRequestNumber }}
 
       - name: Auto Merge
         uses: pascalgn/automerge-action@v0.14.2
