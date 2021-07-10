@@ -1,10 +1,8 @@
 name: Renew monorail data
 
 on:
-  workflow_dispatch:
-    inputs: pullRequestNumber
-    description: Pull request number to auto-approve
-    required: false
+  workflow_dispatch
+  
 env:
   TZ: Asia/Tokyo
 
