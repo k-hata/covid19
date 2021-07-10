@@ -2,7 +2,7 @@ name: Renew monorail data
 
 on:
   workflow_dispatch
-  
+
 env:
   TZ: Asia/Tokyo
 
@@ -51,7 +51,7 @@ jobs:
         uses: hmarr/auto-approve-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          pull_number: ${{ github.event.client_payload.PullRequestNumber }}
+          pull-request-number: ${{ github.event.client_payload.PullRequestNumber }}
 
       - name: Auto Merge
         uses: pascalgn/automerge-action@v0.14.2
