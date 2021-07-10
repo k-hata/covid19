@@ -1,7 +1,8 @@
 name: Renew monorail data
 
 on:
-  workflow_dispatch
+  schedule:
+    - cron: '* * * * *'
 
 env:
   TZ: Asia/Tokyo
@@ -52,7 +53,9 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ env.PULL_REQUEST_NUMBER }}
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Auto Merge
         uses: pascalgn/automerge-action@v0.14.2
         env:
