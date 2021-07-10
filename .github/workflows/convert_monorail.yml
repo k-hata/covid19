@@ -52,7 +52,7 @@ jobs:
       - name: Auto Approve
         uses: hmarr/auto-approve-action@v2
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PAT }}
           pull-request-number: ${{ env.PULL_REQUEST_NUMBER }}
 
       - name: Auto Merge
