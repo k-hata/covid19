@@ -3,7 +3,7 @@ name: Renew monorail data
 on:
   workflow_dispatch:
   schedule:
-  - cron: '00 * * * *'
+  - cron: '10 * * * *'
 
 env:
   TZ: Asia/Tokyo
