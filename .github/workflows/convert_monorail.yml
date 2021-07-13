@@ -3,7 +3,7 @@ name: Renew monorail data
 on:
   workflow_dispatch:
   schedule:
-  - cron: '20 * * * *'
+  - cron: '00 14 * * *'
 
 env:
   TZ: Asia/Tokyo
@@ -33,7 +33,7 @@ jobs:
         run: |
           git config --local user.email "${{ secrets.EMAIL }}"
           git config --local user.name "${{ secrets.NAME }}"
-          git status | grep "modified:   data/monorail.json" && git add data/monorail.json \
+          git status | grep "modified: data/monorail.json" && git add data/monorail.json \
             && git commit -m "update monorail.json: `date +'%Y-%m-%d %H:%M:%S'`"
           git checkout .
           git clean -f
